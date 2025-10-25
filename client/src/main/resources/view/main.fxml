@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.chatapp.client.controller.MainController"
+            prefHeight="800" prefWidth="1200"
+            styleClass="main-container">
+
+    <!-- Left Sidebar (Always visible) -->
+    <left>
+        <fx:include source="components/sidebar-menu.fxml"/>
+    </left>
+
+    <!-- Center: Chat List + Chat View -->
+    <center>
+        <HBox spacing="0" HBox.hgrow="ALWAYS">
+            <!-- Chat List Panel -->
+            <fx:include fx:id="chatListPanel" source="components/chat-list.fxml"/>
+
+            <!-- Chat View Panel -->
+            <fx:include fx:id="chatViewPanel" source="components/chat-view.fxml"/>
+        </HBox>
+    </center>
+
+</BorderPane>

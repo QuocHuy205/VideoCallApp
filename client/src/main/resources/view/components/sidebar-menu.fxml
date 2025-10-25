@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.chatapp.client.controller.component.SidebarMenuController"
+      prefWidth="250" minWidth="250" maxWidth="250"
+      styleClass="sidebar-menu">
+
+    <!-- User Profile Section -->
+    <HBox alignment="CENTER_LEFT" spacing="0" styleClass="sidebar-header">
+        <padding>
+            <Insets top="15" right="15" bottom="15" left="15"/>
+        </padding>
+
+        <Button styleClass="menu-toggle-btn" onAction="#toggleMenu">
+            <graphic>
+                <Label text="☰" styleClass="menu-icon"/>
+            </graphic>
+        </Button>
+
+        <Label text="Telegram" styleClass="app-title"/>
+
+        <Region HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+    <Separator/>
+
+    <!-- User Profile Card -->
+    <HBox alignment="CENTER_LEFT" spacing="12" styleClass="user-profile-card">
+        <padding>
+            <Insets top="15" right="15" bottom="15" left="15"/>
+        </padding>
+
+        <StackPane styleClass="avatar-container">
+            <Label fx:id="userAvatarLabel" text="D" styleClass="user-avatar"/>
+        </StackPane>
+
+        <VBox spacing="2" HBox.hgrow="ALWAYS">
+            <Label fx:id="userFullNameLabel" text="Danial Siddiki" styleClass="user-name"/>
+            <Label fx:id="userPhoneLabel" text="+7 999 888 77 66 5" styleClass="user-phone"/>
+        </VBox>
+    </HBox>
+
+    <Separator/>
+
+    <!-- Menu Items -->
+    <VBox spacing="0" styleClass="menu-items" VBox.vgrow="ALWAYS">
+        <Button text="Chats" onAction="#showChats" styleClass="menu-item">
+            <graphic>
+                <Label text="💬" styleClass="menu-item-icon"/>
+            </graphic>
+        </Button>
+
+        <Button text="Saved messages" onAction="#showSavedMessages" styleClass="menu-item">
+            <graphic>
+                <Label text="📌" styleClass="menu-item-icon"/>
+            </graphic>
+        </Button>
+
+        <Button text="Contacts" onAction="#showContacts" styleClass="menu-item">
+            <graphic>
+                <Label text="👥" styleClass="menu-item-icon"/>
+            </graphic>
+        </Button>
+
+        <Button text="Calls" onAction="#showCalls" styleClass="menu-item">
+            <graphic>
+                <Label text="📞" styleClass="menu-item-icon"/>
+            </graphic>
+        </Button>
+
+        <Button text="Archived chats" onAction="#showArchived" styleClass="menu-item">
+            <graphic>
+                <Label text="📁" styleClass="menu-item-icon"/>
+            </graphic>
+        </Button>
+
+        <Separator/>
+
+        <Button text="Telegram Features" onAction="#showFeatures" styleClass="menu-item">
+            <graphic>
+                <Label text="⭐" styleClass="menu-item-icon"/>
+            </graphic>
+        </Button>
+
+        <Button text="Report Bug" onAction="#reportBug" styleClass="menu-item">
+            <graphic>
+                <Label text="🐛" styleClass="menu-item-icon"/>
+            </graphic>
+        </Button>
+    </VBox>
+
+    <!-- Bottom Section -->
+    <VBox spacing="0" styleClass="menu-bottom">
+        <Separator/>
+
+        <Button text="Settings" onAction="#openSettings" styleClass="menu-item">
+            <graphic>
+                <Label text="⚙️" styleClass="menu-item-icon"/>
+            </graphic>
+        </Button>
+    </VBox>
+
+</VBox>

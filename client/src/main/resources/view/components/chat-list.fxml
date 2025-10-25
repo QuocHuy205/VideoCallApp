@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.chatapp.client.controller.component.ChatListController"
+      prefWidth="380" minWidth="380" maxWidth="380"
+      styleClass="chat-list-panel">
+
+    <!-- Search Bar -->
+    <HBox alignment="CENTER_LEFT" spacing="10" styleClass="search-bar">
+        <padding>
+            <Insets top="10" right="15" bottom="10" left="15"/>
+        </padding>
+
+        <TextField fx:id="searchField" promptText="Search"
+                   HBox.hgrow="ALWAYS" styleClass="search-input"/>
+
+        <Button styleClass="icon-button">
+            <graphic>
+                <Label text="🔍" styleClass="icon-label"/>
+            </graphic>
+        </Button>
+
+        <Button onAction="#startNewChat" styleClass="icon-button">
+            <graphic>
+                <Label text="✏️" styleClass="icon-label"/>
+            </graphic>
+        </Button>
+    </HBox>
+
+    <Separator/>
+
+    <!-- Tabs -->
+    <HBox spacing="0" styleClass="chat-tabs">
+        <Button text="All Chats" onAction="#showAllChats"
+                styleClass="tab-button, tab-active" fx:id="allChatsTab"/>
+        <Button text="Projects" onAction="#showProjects" styleClass="tab-button"/>
+        <Button text="Important" onAction="#showImportant" styleClass="tab-button"/>
+    </HBox>
+
+    <Separator/>
+
+    <!-- Chat List -->
+    <ScrollPane fitToWidth="true" fitToHeight="true"
+                styleClass="chat-list-scroll" VBox.vgrow="ALWAYS">
+        <VBox spacing="0" styleClass="chat-list-container">
+            <ListView fx:id="chatListView" styleClass="chat-list"/>
+        </VBox>
+    </ScrollPane>
+
+</VBox>

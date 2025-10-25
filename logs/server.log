@@ -1,0 +1,35 @@
+2025-10-26 01:14:49.356 [main] INFO  ChatAppServer - =================================
+2025-10-26 01:14:49.365 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-10-26 01:14:49.365 [main] INFO  ChatAppServer - =================================
+2025-10-26 01:14:49.365 [main] INFO  ChatAppServer - Initializing database connection...
+2025-10-26 01:14:49.374 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-26 01:14:49.547 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6bbe85a8
+2025-10-26 01:14:49.548 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-26 01:14:49.550 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-10-26 01:14:49.552 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-10-26 01:14:49.558 [main] INFO  ChatAppServer - Database connection established
+2025-10-26 01:14:49.558 [main] INFO  ChatAppServer - Starting chat server...
+2025-10-26 01:14:49.560 [main] INFO  ChatAppServer - Server started on port 8888
+2025-10-26 01:14:49.560 [main] INFO  ChatAppServer - Waiting for clients...
+2025-10-26 01:15:02.026 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 01:15:02.028 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 01:15:07.160 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1761416107090,"error":null,"success":true}
+2025-10-26 01:15:07.223 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-26 01:15:07.329 [Thread-1] INFO  ChatAppServer - User logged in: huy
+2025-10-26 01:15:07.332 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"huy","userId":2,"email":"huy@gmail.com","statusMessage":null,"username":"huy"},"timestamp":1761416107330,"error":null,"success":true}
+2025-10-26 01:16:37.473 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 01:16:37.476 [Thread-1] INFO  ChatAppServer - Client disconnected
