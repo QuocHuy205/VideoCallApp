@@ -10,19 +10,17 @@ public class ClientMain extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Load login view
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login.fxml"));
         Parent root = loader.load();
 
-        // Create scene with exact size
         Scene scene = new Scene(root, 1000, 650);
-        scene.getStylesheets().add(getClass().getResource("/css/light-theme.css").toExternalForm());
+        // Load auth.css for login/register
+        scene.getStylesheets().add(getClass().getResource("/css/auth.css").toExternalForm());
 
-        // Configure stage
         primaryStage.setTitle("ChatApp - Đăng nhập");
         primaryStage.setScene(scene);
-        primaryStage.setResizable(false); // Không cho resize
-        primaryStage.centerOnScreen(); // Canh giữa màn hình
+        primaryStage.setResizable(false);
+        primaryStage.centerOnScreen();
         primaryStage.show();
     }
 

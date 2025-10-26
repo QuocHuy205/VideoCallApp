@@ -3,53 +3,45 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.chatapp.client.controller.component.ChatListController"
-      prefWidth="380" minWidth="380" maxWidth="380"
       styleClass="chat-list-panel">
 
     <!-- Search Bar -->
-    <HBox alignment="CENTER_LEFT" spacing="10" styleClass="search-bar">
-        <padding>
-            <Insets top="10" right="15" bottom="10" left="15"/>
-        </padding>
-
+    <HBox alignment="CENTER_LEFT" spacing="8" styleClass="search-bar">
         <TextField fx:id="searchField" promptText="Search"
                    HBox.hgrow="ALWAYS" styleClass="search-input"/>
 
-        <Button styleClass="icon-button">
+        <!-- Nút tìm kiếm -->
+        <Button styleClass="icon-button" onAction="#handleSearch">
             <graphic>
-                <Label text="🔍" styleClass="icon-label"/>
+                <FontAwesomeIconView glyphName="SEARCH" size="16" styleClass="icon-path"/>
             </graphic>
         </Button>
 
+        <!-- Nút tạo chat mới -->
         <Button onAction="#startNewChat" styleClass="icon-button">
             <graphic>
-                <Label text="✏️" styleClass="icon-label"/>
+                <FontAwesomeIconView glyphName="PLUS" size="16" styleClass="icon-path"/>
             </graphic>
         </Button>
     </HBox>
-
-    <Separator/>
 
     <!-- Tabs -->
     <HBox spacing="0" styleClass="chat-tabs">
-        <Button text="All Chats" onAction="#showAllChats"
-                styleClass="tab-button, tab-active" fx:id="allChatsTab"/>
-        <Button text="Projects" onAction="#showProjects" styleClass="tab-button"/>
-        <Button text="Important" onAction="#showImportant" styleClass="tab-button"/>
+        <Button fx:id="allChatsTab" text="All Chats" onAction="#showAllChats"
+                styleClass="chat-tab-button, chat-tab-active"/>
+        <Button fx:id="groupsTab" text="Groups" onAction="#showGroups"
+                styleClass="chat-tab-button"/>
     </HBox>
-
-    <Separator/>
 
     <!-- Chat List -->
     <ScrollPane fitToWidth="true" fitToHeight="true"
                 styleClass="chat-list-scroll" VBox.vgrow="ALWAYS">
-        <VBox spacing="0" styleClass="chat-list-container">
-            <ListView fx:id="chatListView" styleClass="chat-list"/>
-        </VBox>
+        <ListView fx:id="chatListView" styleClass="chat-list"/>
     </ScrollPane>
 
 </VBox>

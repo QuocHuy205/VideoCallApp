@@ -3,6 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
@@ -20,25 +21,28 @@
         </StackPane>
 
         <VBox spacing="2" HBox.hgrow="ALWAYS">
-            <Label fx:id="contactNameLabel" text="Designers" styleClass="contact-name"/>
-            <Label fx:id="contactStatusLabel" text="3 members" styleClass="contact-status"/>
+            <Label fx:id="contactNameLabel" text="Select a chat" styleClass="contact-name"/>
+            <Label fx:id="contactStatusLabel" text="to start messaging" styleClass="contact-status"/>
         </VBox>
 
-        <Button styleClass="icon-button" onAction="#startVideoCall">
+        <!-- Video call -->
+        <Button fx:id="videoCallBtn" styleClass="icon-button" onAction="#startVideoCall">
             <graphic>
-                <Label text="📹" styleClass="icon-label-large"/>
+                <FontAwesomeIconView glyphName="VIDEO_CAMERA" size="16" styleClass="icon-path"/>
             </graphic>
         </Button>
 
-        <Button styleClass="icon-button" onAction="#searchInChat">
+        <!-- Search -->
+        <Button fx:id="searchBtn" styleClass="icon-button" onAction="#searchInChat">
             <graphic>
-                <Label text="🔍" styleClass="icon-label-large"/>
+                <FontAwesomeIconView glyphName="SEARCH" size="16" styleClass="icon-path"/>
             </graphic>
         </Button>
 
-        <Button styleClass="icon-button" onAction="#openChatMenu">
+        <!-- Menu -->
+        <Button fx:id="menuBtn" styleClass="icon-button" onAction="#openChatMenu">
             <graphic>
-                <Label text="⋮" styleClass="icon-label-large"/>
+                <FontAwesomeIconView glyphName="ELLIPSIS_V" size="16" styleClass="icon-path"/>
             </graphic>
         </Button>
     </HBox>
@@ -52,6 +56,13 @@
             <padding>
                 <Insets top="15" right="15" bottom="15" left="15"/>
             </padding>
+
+            <!-- Empty State -->
+            <VBox alignment="CENTER" spacing="10" VBox.vgrow="ALWAYS">
+                <Label text="💬" style="-fx-font-size: 64px;"/>
+                <Label text="Chọn một cuộc trò chuyện để bắt đầu"
+                       style="-fx-font-size: 16px; -fx-text-fill: #5f6368;"/>
+            </VBox>
         </VBox>
     </ScrollPane>
 
@@ -64,25 +75,28 @@
         </padding>
 
         <HBox alignment="CENTER" spacing="10">
-            <Button styleClass="icon-button" onAction="#attachFile">
+            <!-- Attach -->
+            <Button fx:id="attachBtn" styleClass="icon-button" onAction="#attachFile">
                 <graphic>
-                    <Label text="📎" styleClass="icon-label-large"/>
+                    <FontAwesomeIconView glyphName="PAPERCLIP" size="16" styleClass="icon-path"/>
                 </graphic>
             </Button>
 
-            <TextField fx:id="messageInputField" promptText="Write a message..."
+            <TextField fx:id="messageInputField" promptText="Nhập tin nhắn..."
                        HBox.hgrow="ALWAYS" styleClass="message-input"
                        onAction="#sendMessage"/>
 
-            <Button styleClass="icon-button" onAction="#addEmoji">
+            <!-- Emoji -->
+            <Button fx:id="emojiBtn" styleClass="icon-button" onAction="#addEmoji">
                 <graphic>
-                    <Label text="😊" styleClass="icon-label-large"/>
+                    <FontAwesomeIconView glyphName="SMILE_O" size="16" styleClass="icon-path"/>
                 </graphic>
             </Button>
 
-            <Button styleClass="icon-button" onAction="#recordVoice">
+            <!-- Voice -->
+            <Button fx:id="voiceBtn" styleClass="icon-button" onAction="#recordVoice">
                 <graphic>
-                    <Label text="🎤" styleClass="icon-label-large"/>
+                    <FontAwesomeIconView glyphName="MICROPHONE" size="16" styleClass="icon-path"/>
                 </graphic>
             </Button>
         </HBox>

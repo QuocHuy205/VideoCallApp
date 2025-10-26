@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.chatapp.client.controller.ProfileController"
+            prefWidth="500" prefHeight="600"
+            styleClass="profile-container">
+
+    <!-- Header -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="15" styleClass="profile-header">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <Button text="←" onAction="#goBack" styleClass="back-button"/>
+            <Label text="Profile" styleClass="profile-title"/>
+        </HBox>
+    </top>
+
+    <!-- Content -->
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="profile-scroll">
+            <VBox spacing="20" styleClass="profile-content">
+                <padding>
+                    <Insets top="30" right="30" bottom="30" left="30"/>
+                </padding>
+
+                <!-- Avatar Section -->
+                <VBox alignment="CENTER" spacing="15">
+                    <StackPane styleClass="profile-avatar-container">
+                        <Label fx:id="profileAvatarLabel" text="U" styleClass="profile-avatar"/>
+                    </StackPane>
+                    <Button text="Thay đổi ảnh đại diện" onAction="#changeAvatar" styleClass="secondary-button"/>
+                </VBox>
+
+                <!-- Info Section -->
+                <VBox spacing="15" styleClass="info-section">
+                    <Label text="Thông tin cá nhân" styleClass="section-title"/>
+
+                    <VBox spacing="8">
+                        <Label text="Tên đăng nhập" styleClass="field-label-dark"/>
+                        <TextField fx:id="usernameField" editable="false" styleClass="profile-field"/>
+                    </VBox>
+
+                    <VBox spacing="8">
+                        <Label text="Email" styleClass="field-label-dark"/>
+                        <TextField fx:id="emailField" editable="false" styleClass="profile-field"/>
+                    </VBox>
+
+                    <VBox spacing="8">
+                        <Label text="Họ và tên" styleClass="field-label-dark"/>
+                        <TextField fx:id="fullNameField" promptText="Nhập họ tên" styleClass="profile-field"/>
+                    </VBox>
+
+                    <VBox spacing="8">
+                        <Label text="Trạng thái" styleClass="field-label-dark"/>
+                        <TextField fx:id="statusMessageField" promptText="Nhập trạng thái của bạn" styleClass="profile-field"/>
+                    </VBox>
+                </VBox>
+
+                <!-- Account Info -->
+                <VBox spacing="15" styleClass="info-section">
+                    <Label text="Thông tin tài khoản" styleClass="section-title"/>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="info-row">
+                        <Label text="Ngày tạo:" styleClass="info-label"/>
+                        <Label fx:id="createdAtLabel" text="--/--/----" styleClass="info-value"/>
+                    </HBox>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="info-row">
+                        <Label text="Lần đăng nhập cuối:" styleClass="info-label"/>
+                        <Label fx:id="lastSeenLabel" text="--/--/----" styleClass="info-value"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Actions -->
+                <VBox spacing="10">
+                    <Button text="Lưu thay đổi" onAction="#saveChanges"
+                            styleClass="primary-button" maxWidth="Infinity"/>
+                    <Button text="Đổi mật khẩu" onAction="#changePassword"
+                            styleClass="secondary-button" maxWidth="Infinity"/>
+                    <Button text="Đăng xuất" onAction="#logout"
+                            styleClass="danger-button" maxWidth="Infinity"/>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

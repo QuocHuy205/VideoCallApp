@@ -9,10 +9,20 @@ public class ChatListController {
     @FXML private TextField searchField;
     @FXML private ListView<?> chatListView;
     @FXML private Button allChatsTab;
+    @FXML private Button groupsTab;
+
+    private Button activeTab;
 
     @FXML
     public void initialize() {
+        activeTab = allChatsTab;
         System.out.println("[CHAT LIST] Initialized");
+    }
+
+    @FXML
+    private void handleSearch() {
+        String query = searchField.getText();
+        System.out.println("Search: " + query);
     }
 
     @FXML
@@ -22,16 +32,21 @@ public class ChatListController {
 
     @FXML
     private void showAllChats() {
+        setActiveTab(allChatsTab);
         System.out.println("Show all chats");
     }
 
     @FXML
-    private void showProjects() {
-        System.out.println("Show projects");
+    private void showGroups() {
+        setActiveTab(groupsTab);
+        System.out.println("Show groups");
     }
 
-    @FXML
-    private void showImportant() {
-        System.out.println("Show important");
+    private void setActiveTab(Button tab) {
+        if (activeTab != null) {
+            activeTab.getStyleClass().remove("chat-tab-active");
+        }
+        tab.getStyleClass().add("chat-tab-active");
+        activeTab = tab;
     }
 }

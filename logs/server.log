@@ -33,3 +33,1132 @@ java.net.SocketException: Connection reset
 	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
 	at java.base/java.lang.Thread.run(Thread.java:840)
 2025-10-26 01:16:37.476 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-10-26 01:20:52.253 [main] INFO  ChatAppServer - =================================
+2025-10-26 01:20:52.254 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-10-26 01:20:52.255 [main] INFO  ChatAppServer - =================================
+2025-10-26 01:20:52.255 [main] INFO  ChatAppServer - Initializing database connection...
+2025-10-26 01:20:52.269 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-26 01:20:52.441 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@58cbafc2
+2025-10-26 01:20:52.442 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-26 01:20:52.444 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-10-26 01:20:52.445 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-10-26 01:20:52.451 [main] INFO  ChatAppServer - Database connection established
+2025-10-26 01:20:52.451 [main] INFO  ChatAppServer - Starting chat server...
+2025-10-26 01:20:52.453 [main] INFO  ChatAppServer - Server started on port 8888
+2025-10-26 01:20:52.453 [main] INFO  ChatAppServer - Waiting for clients...
+2025-10-26 01:21:01.684 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 01:21:01.687 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 01:21:08.257 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1761416468213,"error":null,"success":true}
+2025-10-26 01:21:08.293 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-26 01:21:08.375 [Thread-1] INFO  ChatAppServer - User logged in: huy
+2025-10-26 01:21:08.378 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"huy","userId":2,"email":"huy@gmail.com","statusMessage":null,"username":"huy"},"timestamp":1761416468376,"error":null,"success":true}
+2025-10-26 01:26:53.041 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 01:26:53.044 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-10-26 13:09:31.527 [main] INFO  ChatAppServer - =================================
+2025-10-26 13:09:31.528 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-10-26 13:09:31.528 [main] INFO  ChatAppServer - =================================
+2025-10-26 13:09:31.528 [main] INFO  ChatAppServer - Initializing database connection...
+2025-10-26 13:09:31.542 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-26 13:09:32.746 [main] ERROR com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Exception during pool initialization.
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:175)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81)
+	at com.chatapp.server.database.DatabaseManager.initialize(DatabaseManager.java:39)
+	at com.chatapp.server.ServerMain.main(ServerMain.java:18)
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:150)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:166)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:121)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:945)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	... 12 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:547)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 15 common frames omitted
+2025-10-26 13:09:32.752 [main] ERROR ChatAppServer - Failed to initialize database: Failed to initialize pool: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.zaxxer.hikari.pool.HikariPool.throwPoolInitializationException(HikariPool.java:596)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:582)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81)
+	at com.chatapp.server.database.DatabaseManager.initialize(DatabaseManager.java:39)
+	at com.chatapp.server.ServerMain.main(ServerMain.java:18)
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:175)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	... 4 common frames omitted
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:150)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:166)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:121)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:945)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	... 12 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:547)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 15 common frames omitted
+2025-10-26 13:09:32.755 [main] ERROR ChatAppServer - Failed to start server: Database initialization failed
+java.lang.RuntimeException: Database initialization failed
+	at com.chatapp.server.database.DatabaseManager.initialize(DatabaseManager.java:49)
+	at com.chatapp.server.ServerMain.main(ServerMain.java:18)
+Caused by: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.zaxxer.hikari.pool.HikariPool.throwPoolInitializationException(HikariPool.java:596)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:582)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81)
+	at com.chatapp.server.database.DatabaseManager.initialize(DatabaseManager.java:39)
+	... 1 common frames omitted
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:175)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	... 4 common frames omitted
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:150)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:166)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:121)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:945)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	... 12 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:547)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 15 common frames omitted
+2025-10-26 13:28:39.018 [main] INFO  ChatAppServer - =================================
+2025-10-26 13:28:39.020 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-10-26 13:28:39.020 [main] INFO  ChatAppServer - =================================
+2025-10-26 13:28:39.020 [main] INFO  ChatAppServer - Initializing database connection...
+2025-10-26 13:28:39.032 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-26 13:28:39.264 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@58cbafc2
+2025-10-26 13:28:39.266 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-26 13:28:39.268 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-10-26 13:28:39.270 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-10-26 13:28:39.276 [main] INFO  ChatAppServer - Database connection established
+2025-10-26 13:28:39.276 [main] INFO  ChatAppServer - Starting chat server...
+2025-10-26 13:28:39.280 [main] INFO  ChatAppServer - Server started on port 8888
+2025-10-26 13:28:39.280 [main] INFO  ChatAppServer - Waiting for clients...
+2025-10-26 13:28:53.067 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 13:28:53.074 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 13:28:57.859 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 13:28:57.859 [Thread-2] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 13:29:04.587 [Thread-2] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1761460144545,"error":null,"success":true}
+2025-10-26 13:29:04.618 [Thread-2] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-26 13:29:04.740 [Thread-2] INFO  ChatAppServer - User logged in: huy
+2025-10-26 13:29:04.742 [Thread-2] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"huy","userId":2,"email":"huy@gmail.com","statusMessage":null,"username":"huy"},"timestamp":1761460144740,"error":null,"success":true}
+2025-10-26 13:29:36.133 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 13:29:36.133 [Thread-2] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 13:29:36.136 [Thread-2] INFO  ChatAppServer - Client disconnected
+2025-10-26 13:29:36.136 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-10-26 13:29:38.405 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 13:29:38.406 [Thread-3] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 13:29:44.593 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 13:29:44.594 [Thread-4] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 13:29:46.678 [Thread-3] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 13:29:46.678 [Thread-4] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 13:29:46.679 [Thread-4] INFO  ChatAppServer - Client disconnected
+2025-10-26 13:29:46.679 [Thread-3] INFO  ChatAppServer - Client disconnected
+2025-10-26 13:29:58.547 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 13:29:58.548 [Thread-5] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 13:30:00.643 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 13:30:00.643 [Thread-6] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 13:30:02.088 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 13:30:02.088 [Thread-7] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 13:30:04.159 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 13:30:04.160 [Thread-8] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 13:30:05.478 [Thread-7] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 13:30:05.480 [Thread-7] INFO  ChatAppServer - Client disconnected
+2025-10-26 13:30:05.481 [Thread-6] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 13:30:05.481 [Thread-8] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 13:30:05.481 [Thread-6] INFO  ChatAppServer - Client disconnected
+2025-10-26 13:30:05.481 [Thread-8] INFO  ChatAppServer - Client disconnected
+2025-10-26 13:30:05.481 [Thread-5] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 13:30:05.483 [Thread-5] INFO  ChatAppServer - Client disconnected
+2025-10-26 18:27:23.705 [main] INFO  ChatAppServer - =================================
+2025-10-26 18:27:23.706 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-10-26 18:27:23.706 [main] INFO  ChatAppServer - =================================
+2025-10-26 18:27:23.706 [main] INFO  ChatAppServer - Initializing database connection...
+2025-10-26 18:27:23.722 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-26 18:27:24.937 [main] ERROR com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Exception during pool initialization.
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:175)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81)
+	at com.chatapp.server.database.DatabaseManager.initialize(DatabaseManager.java:39)
+	at com.chatapp.server.ServerMain.main(ServerMain.java:18)
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:150)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:166)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:121)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:945)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	... 12 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:547)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 15 common frames omitted
+2025-10-26 18:27:24.942 [main] ERROR ChatAppServer - Failed to initialize database: Failed to initialize pool: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.zaxxer.hikari.pool.HikariPool.throwPoolInitializationException(HikariPool.java:596)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:582)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81)
+	at com.chatapp.server.database.DatabaseManager.initialize(DatabaseManager.java:39)
+	at com.chatapp.server.ServerMain.main(ServerMain.java:18)
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:175)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	... 4 common frames omitted
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:150)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:166)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:121)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:945)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	... 12 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:547)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 15 common frames omitted
+2025-10-26 18:27:24.947 [main] ERROR ChatAppServer - Failed to start server: Database initialization failed
+java.lang.RuntimeException: Database initialization failed
+	at com.chatapp.server.database.DatabaseManager.initialize(DatabaseManager.java:49)
+	at com.chatapp.server.ServerMain.main(ServerMain.java:18)
+Caused by: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.zaxxer.hikari.pool.HikariPool.throwPoolInitializationException(HikariPool.java:596)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:582)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81)
+	at com.chatapp.server.database.DatabaseManager.initialize(DatabaseManager.java:39)
+	... 1 common frames omitted
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:175)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	... 4 common frames omitted
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:150)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:166)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:121)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:945)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	... 12 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:547)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 15 common frames omitted
+2025-10-26 18:28:53.132 [main] INFO  ChatAppServer - =================================
+2025-10-26 18:28:53.134 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-10-26 18:28:53.134 [main] INFO  ChatAppServer - =================================
+2025-10-26 18:28:53.134 [main] INFO  ChatAppServer - Initializing database connection...
+2025-10-26 18:28:53.146 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-26 18:28:54.230 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@58cbafc2
+2025-10-26 18:28:54.232 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-26 18:28:54.234 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-10-26 18:28:54.236 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-10-26 18:28:54.241 [main] INFO  ChatAppServer - Database connection established
+2025-10-26 18:28:54.241 [main] INFO  ChatAppServer - Starting chat server...
+2025-10-26 18:28:54.245 [main] INFO  ChatAppServer - Server started on port 8888
+2025-10-26 18:28:54.245 [main] INFO  ChatAppServer - Waiting for clients...
+2025-10-26 18:29:06.768 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 18:29:06.774 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 18:29:11.399 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1761478151358,"error":null,"success":true}
+2025-10-26 18:29:11.428 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-26 18:29:11.437 [Thread-1] WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@58cbafc2 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-10-26 18:29:41.434 [Thread-1] ERROR ChatAppServer - Login failed: HikariPool-1 - Connection is not available, request timed out after 30002ms.
+java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30002ms.
+	at com.zaxxer.hikari.pool.HikariPool.createTimeoutException(HikariPool.java:696)
+	at com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:181)
+	at com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:146)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:100)
+	at com.chatapp.server.database.DatabaseManager.getConnection(DatabaseManager.java:57)
+	at com.chatapp.server.database.dao.UserDAO.findByUsername(UserDAO.java:44)
+	at com.chatapp.server.service.AuthService.login(AuthService.java:70)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:35)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:175)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:733)
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:712)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	... 1 common frames omitted
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at jdk.internal.reflect.GeneratedConstructorAccessor3.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:150)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:166)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:121)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:945)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	... 13 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:547)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 16 common frames omitted
+2025-10-26 18:29:41.441 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1761478181438,"error":"HikariPool-1 - Connection is not available, request timed out after 30002ms.","success":false}
+2025-10-26 18:29:47.500 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1761478187500,"error":null,"success":true}
+2025-10-26 18:29:47.501 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-26 18:30:17.513 [Thread-1] ERROR ChatAppServer - Login failed: HikariPool-1 - Connection is not available, request timed out after 30012ms.
+java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30012ms.
+	at com.zaxxer.hikari.pool.HikariPool.createTimeoutException(HikariPool.java:696)
+	at com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:181)
+	at com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:146)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:100)
+	at com.chatapp.server.database.DatabaseManager.getConnection(DatabaseManager.java:57)
+	at com.chatapp.server.database.dao.UserDAO.findByUsername(UserDAO.java:44)
+	at com.chatapp.server.service.AuthService.login(AuthService.java:70)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:35)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:175)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:733)
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:712)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	... 1 common frames omitted
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at jdk.internal.reflect.GeneratedConstructorAccessor3.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:150)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:166)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:121)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:945)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	... 13 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:547)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 16 common frames omitted
+2025-10-26 18:30:17.514 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1761478217514,"error":"HikariPool-1 - Connection is not available, request timed out after 30012ms.","success":false}
+2025-10-26 18:30:17.515 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1761478195315,"error":null,"success":true}
+2025-10-26 18:30:17.515 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-26 18:30:47.521 [Thread-1] ERROR ChatAppServer - Login failed: HikariPool-1 - Connection is not available, request timed out after 30005ms.
+java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30005ms.
+	at com.zaxxer.hikari.pool.HikariPool.createTimeoutException(HikariPool.java:696)
+	at com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:181)
+	at com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:146)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:100)
+	at com.chatapp.server.database.DatabaseManager.getConnection(DatabaseManager.java:57)
+	at com.chatapp.server.database.dao.UserDAO.findByUsername(UserDAO.java:44)
+	at com.chatapp.server.service.AuthService.login(AuthService.java:70)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:35)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:175)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:733)
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:712)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	... 1 common frames omitted
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at jdk.internal.reflect.GeneratedConstructorAccessor3.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:150)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:166)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:121)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:945)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	... 13 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:547)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 16 common frames omitted
+2025-10-26 18:30:47.522 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1761478247522,"error":"HikariPool-1 - Connection is not available, request timed out after 30005ms.","success":false}
+2025-10-26 18:30:47.524 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 18:30:47.524 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-10-26 18:30:49.336 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 18:30:49.336 [Thread-2] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 18:30:54.193 [Thread-2] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1761478254150,"error":null,"success":true}
+2025-10-26 18:30:54.194 [Thread-2] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-26 18:31:09.535 [main] INFO  ChatAppServer - =================================
+2025-10-26 18:31:09.537 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-10-26 18:31:09.537 [main] INFO  ChatAppServer - =================================
+2025-10-26 18:31:09.537 [main] INFO  ChatAppServer - Initializing database connection...
+2025-10-26 18:31:09.546 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-26 18:31:09.705 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@58cbafc2
+2025-10-26 18:31:09.706 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-26 18:31:09.708 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-10-26 18:31:09.709 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-10-26 18:31:09.716 [main] INFO  ChatAppServer - Database connection established
+2025-10-26 18:31:09.716 [main] INFO  ChatAppServer - Starting chat server...
+2025-10-26 18:31:09.718 [main] INFO  ChatAppServer - Server started on port 8888
+2025-10-26 18:31:09.719 [main] INFO  ChatAppServer - Waiting for clients...
+2025-10-26 18:31:14.889 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 18:31:14.892 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 18:31:19.030 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1761478278989,"error":null,"success":true}
+2025-10-26 18:31:19.057 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-26 18:31:19.203 [Thread-1] INFO  ChatAppServer - User logged in: huy
+2025-10-26 18:31:19.206 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"huy","userId":2,"email":"huy@gmail.com","statusMessage":null,"username":"huy"},"timestamp":1761478279204,"error":null,"success":true}
+2025-10-26 18:52:35.983 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m56s128ms773µs900ns).
+2025-10-26 19:00:39.241 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 19:00:39.244 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-10-26 19:02:40.086 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 19:02:40.087 [Thread-2] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 19:02:52.021 [Thread-2] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1761480171980,"error":null,"success":true}
+2025-10-26 19:02:52.021 [Thread-2] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-26 19:02:52.082 [Thread-2] INFO  ChatAppServer - User logged in: huy
+2025-10-26 19:02:52.082 [Thread-2] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"huy","userId":2,"email":"huy@gmail.com","statusMessage":null,"username":"huy"},"timestamp":1761480172082,"error":null,"success":true}
+2025-10-26 19:04:52.857 [Thread-2] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 19:04:52.857 [Thread-2] INFO  ChatAppServer - Client disconnected
+2025-10-26 19:05:11.879 [main] INFO  ChatAppServer - =================================
+2025-10-26 19:05:11.881 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-10-26 19:05:11.881 [main] INFO  ChatAppServer - =================================
+2025-10-26 19:05:11.881 [main] INFO  ChatAppServer - Initializing database connection...
+2025-10-26 19:05:11.889 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-26 19:05:12.057 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@58cbafc2
+2025-10-26 19:05:12.059 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-26 19:05:12.060 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-10-26 19:05:12.062 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-10-26 19:05:12.069 [main] INFO  ChatAppServer - Database connection established
+2025-10-26 19:05:12.069 [main] INFO  ChatAppServer - Starting chat server...
+2025-10-26 19:05:12.070 [main] INFO  ChatAppServer - Server started on port 8888
+2025-10-26 19:05:12.070 [main] INFO  ChatAppServer - Waiting for clients...
+2025-10-26 19:05:21.700 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 19:05:21.702 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 19:05:25.822 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1761480325780,"error":null,"success":true}
+2025-10-26 19:05:25.851 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-26 19:05:25.935 [Thread-1] INFO  ChatAppServer - User logged in: huy
+2025-10-26 19:05:25.937 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"huy","userId":2,"email":"huy@gmail.com","statusMessage":null,"username":"huy"},"timestamp":1761480325936,"error":null,"success":true}
+2025-10-26 19:05:30.965 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 19:05:30.968 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-10-26 20:00:54.370 [main] INFO  ChatAppServer - =================================
+2025-10-26 20:00:54.371 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-10-26 20:00:54.371 [main] INFO  ChatAppServer - =================================
+2025-10-26 20:00:54.371 [main] INFO  ChatAppServer - Initializing database connection...
+2025-10-26 20:00:54.380 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-26 20:00:54.551 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@58cbafc2
+2025-10-26 20:00:54.553 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-26 20:00:54.554 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-10-26 20:00:54.556 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-10-26 20:00:54.561 [main] INFO  ChatAppServer - Database connection established
+2025-10-26 20:00:54.562 [main] INFO  ChatAppServer - Starting chat server...
+2025-10-26 20:00:54.564 [main] INFO  ChatAppServer - Server started on port 8888
+2025-10-26 20:00:54.564 [main] INFO  ChatAppServer - Waiting for clients...
+2025-10-26 20:01:06.752 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 20:01:06.754 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 20:01:13.802 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1761483673759,"error":null,"success":true}
+2025-10-26 20:01:13.840 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-26 20:01:13.928 [Thread-1] INFO  ChatAppServer - User logged in: huy
+2025-10-26 20:01:13.930 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"huy","userId":2,"email":"huy@gmail.com","statusMessage":null,"username":"huy"},"timestamp":1761483673929,"error":null,"success":true}
+2025-10-26 20:01:56.543 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-10-26 20:01:56.556 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 20:01:56.558 [Thread-2] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 20:02:01.341 [Thread-2] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1761483721340,"error":null,"success":true}
+2025-10-26 20:02:01.341 [Thread-2] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-26 20:02:01.402 [Thread-2] INFO  ChatAppServer - User logged in: huy
+2025-10-26 20:02:01.402 [Thread-2] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"huy","userId":2,"email":"huy@gmail.com","statusMessage":null,"username":"huy"},"timestamp":1761483721402,"error":null,"success":true}
+2025-10-26 20:02:15.496 [Thread-2] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 20:02:15.498 [Thread-2] INFO  ChatAppServer - Client disconnected
+2025-10-26 20:04:32.789 [main] INFO  ChatAppServer - =================================
+2025-10-26 20:04:32.791 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-10-26 20:04:32.791 [main] INFO  ChatAppServer - =================================
+2025-10-26 20:04:32.791 [main] INFO  ChatAppServer - Initializing database connection...
+2025-10-26 20:04:32.800 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-26 20:04:32.961 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@58cbafc2
+2025-10-26 20:04:32.963 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-26 20:04:32.965 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-10-26 20:04:32.967 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-10-26 20:04:32.972 [main] INFO  ChatAppServer - Database connection established
+2025-10-26 20:04:32.972 [main] INFO  ChatAppServer - Starting chat server...
+2025-10-26 20:04:32.976 [main] INFO  ChatAppServer - Server started on port 8888
+2025-10-26 20:04:32.976 [main] INFO  ChatAppServer - Waiting for clients...
+2025-10-26 20:04:45.432 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 20:04:45.434 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 20:04:49.529 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1761483889486,"error":null,"success":true}
+2025-10-26 20:04:49.561 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-26 20:04:49.645 [Thread-1] INFO  ChatAppServer - User logged in: huy
+2025-10-26 20:04:49.647 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"huy","userId":2,"email":"huy@gmail.com","statusMessage":null,"username":"huy"},"timestamp":1761483889645,"error":null,"success":true}
+2025-10-26 20:05:33.561 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 20:05:33.564 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-10-26 20:05:34.767 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 20:05:34.767 [Thread-2] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 20:05:40.263 [Thread-2] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1761483940221,"error":null,"success":true}
+2025-10-26 20:05:40.263 [Thread-2] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-26 20:05:40.327 [Thread-2] INFO  ChatAppServer - User logged in: huy
+2025-10-26 20:05:40.327 [Thread-2] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"huy","userId":2,"email":"huy@gmail.com","statusMessage":null,"username":"huy"},"timestamp":1761483940327,"error":null,"success":true}
+2025-10-26 20:06:01.203 [Thread-2] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 20:06:01.203 [Thread-2] INFO  ChatAppServer - Client disconnected
+2025-10-26 20:20:16.554 [main] INFO  ChatAppServer - =================================
+2025-10-26 20:20:16.556 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-10-26 20:20:16.556 [main] INFO  ChatAppServer - =================================
+2025-10-26 20:20:16.556 [main] INFO  ChatAppServer - Initializing database connection...
+2025-10-26 20:20:16.565 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-26 20:20:16.739 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@58cbafc2
+2025-10-26 20:20:16.741 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-26 20:20:16.742 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-10-26 20:20:16.744 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-10-26 20:20:16.750 [main] INFO  ChatAppServer - Database connection established
+2025-10-26 20:20:16.750 [main] INFO  ChatAppServer - Starting chat server...
+2025-10-26 20:20:16.753 [main] INFO  ChatAppServer - Server started on port 8888
+2025-10-26 20:20:16.753 [main] INFO  ChatAppServer - Waiting for clients...
+2025-10-26 20:20:27.445 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 20:20:27.448 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 20:20:31.506 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1761484831463,"error":null,"success":true}
+2025-10-26 20:20:31.537 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-26 20:20:31.622 [Thread-1] INFO  ChatAppServer - User logged in: huy
+2025-10-26 20:20:31.625 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"huy","userId":2,"email":"huy@gmail.com","statusMessage":null,"username":"huy"},"timestamp":1761484831623,"error":null,"success":true}
+2025-10-26 20:21:10.304 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 20:21:10.305 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-10-26 22:50:29.549 [main] INFO  ChatAppServer - =================================
+2025-10-26 22:50:29.550 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-10-26 22:50:29.550 [main] INFO  ChatAppServer - =================================
+2025-10-26 22:50:29.550 [main] INFO  ChatAppServer - Initializing database connection...
+2025-10-26 22:50:29.559 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-26 22:50:29.732 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@58cbafc2
+2025-10-26 22:50:29.734 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-26 22:50:29.736 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-10-26 22:50:29.737 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-10-26 22:50:29.744 [main] INFO  ChatAppServer - Database connection established
+2025-10-26 22:50:29.744 [main] INFO  ChatAppServer - Starting chat server...
+2025-10-26 22:50:29.747 [main] INFO  ChatAppServer - Server started on port 8888
+2025-10-26 22:50:29.747 [main] INFO  ChatAppServer - Waiting for clients...
+2025-10-26 22:50:41.216 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 22:50:41.220 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 22:51:18.307 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1761493878263,"error":null,"success":true}
+2025-10-26 22:51:18.350 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-26 22:51:18.451 [Thread-1] INFO  ChatAppServer - User logged in: huy
+2025-10-26 22:51:18.454 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"huy","userId":2,"email":"huy@gmail.com","statusMessage":null,"username":"huy"},"timestamp":1761493878451,"error":null,"success":true}
+2025-10-26 23:07:23.115 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 23:07:23.119 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-10-26 23:07:25.679 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 23:07:25.680 [Thread-2] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 23:07:30.348 [Thread-2] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1761494850305,"error":null,"success":true}
+2025-10-26 23:07:30.348 [Thread-2] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-26 23:07:30.408 [Thread-2] INFO  ChatAppServer - User logged in: huy
+2025-10-26 23:07:30.409 [Thread-2] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"huy","userId":2,"email":"huy@gmail.com","statusMessage":null,"username":"huy"},"timestamp":1761494850409,"error":null,"success":true}
+2025-10-26 23:07:59.953 [Thread-2] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 23:07:59.954 [Thread-2] INFO  ChatAppServer - Client disconnected
+2025-10-26 23:08:01.079 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 23:08:01.080 [Thread-3] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 23:08:05.073 [Thread-3] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1761494885032,"error":null,"success":true}
+2025-10-26 23:08:05.073 [Thread-3] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-26 23:08:05.133 [Thread-3] INFO  ChatAppServer - User logged in: huy
+2025-10-26 23:08:05.134 [Thread-3] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"huy","userId":2,"email":"huy@gmail.com","statusMessage":null,"username":"huy"},"timestamp":1761494885134,"error":null,"success":true}
+2025-10-26 23:08:35.132 [Thread-3] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 23:08:35.132 [Thread-3] INFO  ChatAppServer - Client disconnected
+2025-10-26 23:09:50.247 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 23:09:50.248 [Thread-4] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 23:09:54.022 [Thread-4] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1761494993982,"error":null,"success":true}
+2025-10-26 23:09:54.022 [Thread-4] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-26 23:09:54.082 [Thread-4] INFO  ChatAppServer - User logged in: huy
+2025-10-26 23:09:54.082 [Thread-4] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"huy","userId":2,"email":"huy@gmail.com","statusMessage":null,"username":"huy"},"timestamp":1761494994082,"error":null,"success":true}
+2025-10-26 23:10:37.753 [Thread-4] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 23:10:37.753 [Thread-4] INFO  ChatAppServer - Client disconnected
+2025-10-26 23:10:38.755 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 23:10:38.756 [Thread-5] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 23:10:43.444 [Thread-5] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1761495043400,"error":null,"success":true}
+2025-10-26 23:10:43.444 [Thread-5] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-26 23:10:43.502 [Thread-5] INFO  ChatAppServer - User logged in: huy
+2025-10-26 23:10:43.504 [Thread-5] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"huy","userId":2,"email":"huy@gmail.com","statusMessage":null,"username":"huy"},"timestamp":1761495043504,"error":null,"success":true}
+2025-10-26 23:10:51.395 [Thread-5] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 23:10:51.395 [Thread-5] INFO  ChatAppServer - Client disconnected
+2025-10-26 23:10:58.160 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 23:10:58.161 [Thread-6] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 23:11:02.768 [Thread-6] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1761495062728,"error":null,"success":true}
+2025-10-26 23:11:02.768 [Thread-6] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-26 23:11:02.829 [Thread-6] INFO  ChatAppServer - User logged in: huy
+2025-10-26 23:11:02.829 [Thread-6] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"huy","userId":2,"email":"huy@gmail.com","statusMessage":null,"username":"huy"},"timestamp":1761495062829,"error":null,"success":true}
+2025-10-26 23:11:08.341 [Thread-6] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 23:11:08.341 [Thread-6] INFO  ChatAppServer - Client disconnected
+2025-10-26 23:12:03.905 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-26 23:12:03.905 [Thread-7] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-26 23:12:07.849 [Thread-7] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1761495127807,"error":null,"success":true}
+2025-10-26 23:12:07.850 [Thread-7] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-26 23:12:07.909 [Thread-7] INFO  ChatAppServer - User logged in: huy
+2025-10-26 23:12:07.909 [Thread-7] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"huy","userId":2,"email":"huy@gmail.com","statusMessage":null,"username":"huy"},"timestamp":1761495127909,"error":null,"success":true}
+2025-10-26 23:12:26.864 [Thread-7] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-26 23:12:26.864 [Thread-7] INFO  ChatAppServer - Client disconnected

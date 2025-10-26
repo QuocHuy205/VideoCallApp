@@ -111,7 +111,9 @@ public class LoginController {
             Parent root = loader.load();
 
             Scene scene = new Scene(root, 1200, 800);
-            scene.getStylesheets().add(getClass().getResource("/css/light-theme.css").toExternalForm());
+            // Load main.css for main window
+            scene.getStylesheets().clear();
+            scene.getStylesheets().add(getClass().getResource("/css/main.css").toExternalForm());
 
             stage.setScene(scene);
             stage.setTitle("ChatApp - " + authService.getCurrentUser().getUsername());
