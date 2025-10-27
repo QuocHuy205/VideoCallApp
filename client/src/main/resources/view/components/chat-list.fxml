@@ -25,7 +25,7 @@
         <!-- Nút tạo chat mới -->
         <Button onAction="#startNewChat" styleClass="icon-button">
             <graphic>
-                <FontAwesomeIconView glyphName="PLUS" size="16" styleClass="icon-path"/>
+                <FontAwesomeIconView glyphName="USER_PLUS" size="16" styleClass="icon-path"/>
             </graphic>
         </Button>
     </HBox>

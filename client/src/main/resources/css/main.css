@@ -693,3 +693,240 @@
 .menu-bottom {
     -fx-background-color: transparent;
 }
+
+/* Profile Panel Styles */
+.profile-panel {
+    -fx-background-color: #ffffff;
+}
+
+.profile-header {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.profile-scroll {
+    -fx-background-color: transparent;
+}
+
+.profile-scroll > .viewport {
+    -fx-background-color: transparent;
+}
+
+.profile-content {
+    -fx-background-color: #ffffff;
+}
+
+/* Profile Avatar */
+.profile-avatar-container {
+    -fx-background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -fx-background-radius: 75px;
+    -fx-min-width: 150px;
+    -fx-min-height: 150px;
+    -fx-max-width: 150px;
+    -fx-max-height: 150px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 2);
+}
+
+.profile-avatar {
+    -fx-font-size: 64px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+/* Profile Form Elements */
+.profile-label {
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #5f6368;
+    -fx-padding: 0 0 5 0;
+}
+
+.profile-input {
+    -fx-background-color: #f1f3f4;
+    -fx-background-radius: 8px;
+    -fx-border-color: transparent;
+    -fx-border-radius: 8px;
+    -fx-padding: 12px 15px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #202124;
+}
+
+.profile-input:focused {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #1a73e8;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(three-pass-box, rgba(26, 115, 232, 0.2), 5, 0, 0, 0);
+}
+
+.profile-input-readonly {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-padding: 12px 15px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #5f6368;
+    -fx-opacity: 1.0;
+}
+
+.profile-textarea {
+    -fx-background-color: #f1f3f4;
+    -fx-background-radius: 8px;
+    -fx-border-color: transparent;
+    -fx-border-radius: 8px;
+    -fx-padding: 12px 15px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #202124;
+}
+
+.profile-textarea:focused {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #1a73e8;
+    -fx-border-width: 2px;
+}
+
+.profile-textarea.profile-input-readonly {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1px;
+}
+
+.profile-combo {
+    -fx-background-color: #f1f3f4;
+    -fx-background-radius: 8px;
+    -fx-border-color: transparent;
+    -fx-border-radius: 8px;
+    -fx-padding: 8px 15px;
+}
+
+.profile-combo:disabled {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1px;
+    -fx-opacity: 1.0;
+}
+
+.profile-info-text {
+    -fx-font-size: 13px;
+    -fx-text-fill: #5f6368;
+    -fx-padding: 5 0 0 0;
+}
+
+/* Buttons */
+.primary-button {
+    -fx-background-color: #1a73e8;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-padding: 10px 24px;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+}
+
+.primary-button:hover {
+    -fx-background-color: #1557b0;
+}
+
+.primary-button:pressed {
+    -fx-background-color: #104a8e;
+}
+
+.secondary-button {
+    -fx-background-color: #f1f3f4;
+    -fx-text-fill: #5f6368;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-padding: 10px 24px;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #e8eaed;
+}
+
+.secondary-button:pressed {
+    -fx-background-color: #dadce0;
+}
+
+.danger-button {
+    -fx-background-color: #ea4335;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-padding: 10px 24px;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+}
+
+.danger-button:hover {
+    -fx-background-color: #d33426;
+}
+
+.danger-button:pressed {
+    -fx-background-color: #b72d1f;
+}
+
+/* User Profile Card in Sidebar */
+.user-profile-card {
+    -fx-background-color: transparent;
+    -fx-padding: 12px 15px;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0;
+}
+
+.user-profile-card:hover {
+    -fx-background-color: rgba(26, 115, 232, 0.08);
+}
+
+.user-profile-card:pressed {
+    -fx-background-color: rgba(26, 115, 232, 0.12);
+}
+
+/* Dark Theme Support */
+.dark-theme .profile-panel,
+.dark-theme .profile-content {
+    -fx-background-color: #1e1e1e;
+}
+
+.dark-theme .profile-header {
+    -fx-background-color: #2d2d2d;
+    -fx-border-color: #3d3d3d;
+}
+
+.dark-theme .profile-input {
+    -fx-background-color: #2d2d2d;
+    -fx-text-fill: #e8eaed;
+}
+
+.dark-theme .profile-input:focused {
+    -fx-background-color: #3d3d3d;
+}
+
+.dark-theme .profile-input-readonly {
+    -fx-background-color: #252525;
+    -fx-border-color: #3d3d3d;
+    -fx-text-fill: #9aa0a6;
+}
+
+.dark-theme .profile-label {
+    -fx-text-fill: #9aa0a6;
+}
+
+.dark-theme .profile-info-text {
+    -fx-text-fill: #9aa0a6;
+}
+
+.dark-theme .secondary-button {
+    -fx-background-color: #2d2d2d;
+    -fx-text-fill: #e8eaed;
+}
+
+.dark-theme .secondary-button:hover {
+    -fx-background-color: #3d3d3d;
+}

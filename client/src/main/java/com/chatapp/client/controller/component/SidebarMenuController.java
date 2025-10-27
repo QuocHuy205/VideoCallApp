@@ -1,6 +1,8 @@
 package com.chatapp.client.controller.component;
 
+import com.chatapp.client.controller.component.ProfileController;
 import com.chatapp.client.service.AuthService;
+import com.chatapp.common.model.User;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,11 +12,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Optional;
 
 public class SidebarMenuController {
+    @FXML private VBox sidebarContainer;
     @FXML private Label userNameLabel;
     @FXML private Label userAvatarLabel;
 
@@ -35,18 +41,104 @@ public class SidebarMenuController {
         authService = AuthService.getInstance();
 
         // Load user info
-        if (authService.getCurrentUser() != null) {
-            String username = authService.getCurrentUser().getUsername();
+        loadUserInfo();
+
+        // Setup click handler for user profile card
+        setupUserProfileClickHandler();
+
+        // Test buttons
+        if (chatsBtn != null) System.out.println("[SIDEBAR] Chats button found");
+        if (settingsBtn != null) System.out.println("[SIDEBAR] Settings button found");
+    }
+
+    /**
+     * Load và hiển thị thông tin user
+     */
+    private void loadUserInfo() {
+        User currentUser = authService.getCurrentUser();
+        if (currentUser != null) {
+            String username = currentUser.getUsername();
             userNameLabel.setText(username);
 
             if (username != null && !username.isEmpty()) {
                 userAvatarLabel.setText(username.substring(0, 1).toUpperCase());
             }
         }
+    }
 
-        // Test buttons
-        if (chatsBtn != null) System.out.println("[SIDEBAR] Chats button found");
-        if (settingsBtn != null) System.out.println("[SIDEBAR] Settings button found");
+    /**
+     * Setup click handler cho user profile card để mở profile window
+     */
+    private void setupUserProfileClickHandler() {
+        // Tìm Button có styleClass "user-profile-card" trong sidebar
+        if (sidebarContainer != null) {
+            for (javafx.scene.Node node : sidebarContainer.getChildren()) {
+                if (node instanceof Button && node.getStyleClass().contains("user-profile-card")) {
+                    ((Button) node).setOnAction(event -> openProfileWindow());
+                    System.out.println("[SIDEBAR] User profile click handler setup");
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+     * Mở cửa sổ Profile
+     */
+    private void openProfileWindow() {
+        User currentUser = authService.getCurrentUser();
+
+        if (currentUser == null) {
+            showError("Lỗi", "Không tìm thấy thông tin người dùng!");
+            System.err.println("[SIDEBAR] No user logged in!");
+            return;
+        }
+
+        try {
+            System.out.println("[SIDEBAR] Opening profile window for: " + currentUser.getUsername());
+
+            // Load FXML
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/view/components/profile.fxml")
+            );
+            Parent root = loader.load();
+
+            // Get controller và set user data
+            ProfileController profileController = loader.getController();
+            profileController.setUser(currentUser);
+
+            // Tạo Stage mới (modal window)
+            Stage profileStage = new Stage();
+            profileStage.setTitle("Hồ sơ người dùng");
+            profileStage.initModality(Modality.APPLICATION_MODAL);
+
+            // Tạo scene
+            Scene scene = new Scene(root, 500, 700);
+
+            // Apply stylesheet
+            try {
+                scene.getStylesheets().add(
+                        getClass().getResource("/css/main.css").toExternalForm()
+                );
+            } catch (Exception e) {
+                System.err.println("[SIDEBAR] Warning: Could not load main.css for profile");
+            }
+
+            profileStage.setScene(scene);
+            profileStage.setResizable(false);
+
+            // Hiển thị và đợi
+            profileStage.showAndWait();
+
+            // Refresh user info sau khi đóng profile window
+            loadUserInfo();
+            System.out.println("[SIDEBAR] Profile window closed");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("[SIDEBAR] Error opening profile window: " + e.getMessage());
+            showError("Lỗi", "Không thể mở cửa sổ hồ sơ: " + e.getMessage());
+        }
     }
 
     @FXML
@@ -95,7 +187,8 @@ public class SidebarMenuController {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent()) {
             if (result.get() == btnProfile) {
-                showInfo("Profile", "Đang phát triển...");
+                // Mở profile window
+                openProfileWindow();
             } else if (result.get() == btnLogout) {
                 handleLogout();
             }
@@ -154,6 +247,14 @@ public class SidebarMenuController {
 
     private void showInfo(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    private void showError(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);

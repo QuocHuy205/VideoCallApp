@@ -1,5 +1,9 @@
 package com.chatapp.common.protocol;
 
+/**
+ * Enum định nghĩa các loại message trong giao thức
+ * CẬP NHẬT: Thêm các type mới cho chức năng profile
+ */
 public enum MessageType {
     // Authentication
     LOGIN_REQUEST,
@@ -12,6 +16,16 @@ public enum MessageType {
     FORGOT_PASSWORD_RESPONSE,
     VERIFY_OTP_REQUEST,
     VERIFY_OTP_RESPONSE,
+
+    // User Profile Management - THÊM MỚI
+    UPDATE_PROFILE_REQUEST,
+    UPDATE_PROFILE_RESPONSE,
+    CHANGE_PASSWORD_REQUEST,
+    CHANGE_PASSWORD_RESPONSE,
+    UPLOAD_AVATAR_REQUEST,
+    UPLOAD_AVATAR_RESPONSE,
+    GET_USER_INFO_REQUEST,
+    GET_USER_INFO_RESPONSE,
 
     // Friend
     ADD_FRIEND_REQUEST,

@@ -19,7 +19,7 @@
 
     <Separator/>
 
-    <!-- User Profile Card -->
+    <!-- User Profile Card - QUAN TRỌNG: Click để mở profile -->
     <Button styleClass="user-profile-card">
         <graphic>
             <HBox alignment="CENTER_LEFT" spacing="12" prefWidth="228">

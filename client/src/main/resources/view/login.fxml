@@ -8,29 +8,25 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.chatapp.client.controller.LoginController"
             prefHeight="650" prefWidth="1000"
-            minHeight="650" minWidth="1000"
-            maxHeight="650" maxWidth="1000"
             styleClass="root-container">
 
-    <!-- Left Side - Login Form -->
     <left>
-        <VBox alignment="CENTER" spacing="20" styleClass="form-container"
-              prefHeight="650" minHeight="650" maxHeight="650">
+        <VBox alignment="CENTER" spacing="20" styleClass="form-container">
             <padding>
-                <Insets top="80" right="50" bottom="80" left="50"/>
+                <Insets top="70" right="50" bottom="70" left="50"/>
             </padding>
 
             <VBox alignment="CENTER" spacing="5">
                 <Label text="LOGIN" styleClass="page-title"/>
-                <Label text="Login to your account" styleClass="page-subtitle"/>
+                <Label text="Access your account securely" alignment="CENTER" styleClass="page-subtitle"/>
             </VBox>
 
-            <VBox spacing="18" maxWidth="360" prefWidth="360" VBox.vgrow="NEVER">
+            <VBox spacing="18" maxWidth="360">
                 <VBox spacing="8">
-                    <Label text="User Name" styleClass="field-label"/>
+                    <Label text="Username" styleClass="field-label"/>
                     <HBox styleClass="input-field">
                         <Label text="👤" styleClass="field-icon"/>
-                        <TextField fx:id="usernameField" promptText="kawi" HBox.hgrow="ALWAYS"/>
+                        <TextField fx:id="usernameField" promptText="username" HBox.hgrow="ALWAYS"/>
                     </HBox>
                 </VBox>
 
@@ -38,45 +34,38 @@
                     <Label text="Password" styleClass="field-label"/>
                     <HBox styleClass="input-field">
                         <Label text="🔒" styleClass="field-icon"/>
-                        <PasswordField fx:id="passwordField" promptText="12345abc" HBox.hgrow="ALWAYS"/>
+                        <PasswordField fx:id="passwordField" promptText="••••••••" HBox.hgrow="ALWAYS"/>
                     </HBox>
                 </VBox>
             </VBox>
 
             <VBox spacing="15" alignment="CENTER">
                 <Button fx:id="loginButton" text="LOGIN" onAction="#handleLogin"
-                        styleClass="primary-button" maxWidth="360" prefWidth="360"/>
-
-                <Hyperlink text="Need help?" onAction="#handleForgotPassword"/>
+                        styleClass="primary-button" maxWidth="360"/>
+                <Hyperlink text="Forgot password?" onAction="#handleForgotPassword"/>
             </VBox>
         </VBox>
     </left>
 
-    <!-- Right Side - Info Panel -->
     <center>
-        <VBox alignment="CENTER" spacing="35" styleClass="info-panel"
-              prefHeight="650" minHeight="650" maxHeight="650">
+        <VBox alignment="CENTER" spacing="35" styleClass="info-panel">
             <padding>
                 <Insets top="60" right="50" bottom="60" left="50"/>
             </padding>
 
-            <!-- Tab Buttons -->
             <HBox spacing="0" alignment="CENTER" styleClass="tab-container">
                 <Button text="LOGIN" styleClass="tab-button, tab-active"/>
                 <Button text="REGISTER" onAction="#handleRegister" styleClass="tab-button"/>
             </HBox>
 
-            <!-- Illustration Area -->
-            <VBox alignment="CENTER" spacing="15" styleClass="illustration-area" VBox.vgrow="ALWAYS">
+            <VBox alignment="CENTER" spacing="15" styleClass="illustration-area">
                 <Label text="🔐" styleClass="illustration-icon"/>
-                <Label text="Secure Login" styleClass="illustration-title"/>
+                <Label text="Welcome Back!" styleClass="illustration-title"/>
                 <VBox alignment="CENTER" spacing="5">
-                    <Label text="Your data is protected with" styleClass="illustration-text"/>
-                    <Label text="end-to-end encryption" styleClass="illustration-text"/>
+                    <Label text="Secure, fast and reliable access" styleClass="illustration-text"/>
+                    <Label text="to your account." styleClass="illustration-text"/>
                 </VBox>
             </VBox>
-
-            <Label text="KAWIDESIGN.COM" styleClass="watermark"/>
         </VBox>
     </center>
 

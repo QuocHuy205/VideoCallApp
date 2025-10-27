@@ -87,7 +87,7 @@ public class LoginController {
             Parent root = loader.load();
 
             Scene scene = new Scene(root, 1000, 650);
-            scene.getStylesheets().add(getClass().getResource("/css/light-theme.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("/css/auth.css").toExternalForm());
 
             stage.setScene(scene);
             stage.setTitle("ChatApp - Đăng ký");
