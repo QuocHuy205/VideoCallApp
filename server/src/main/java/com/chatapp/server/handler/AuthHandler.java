@@ -1,6 +1,5 @@
 package com.chatapp.server.handler;
 
-import com.chatapp.common.model.User;
 import com.chatapp.common.protocol.MessageType;
 import com.chatapp.common.protocol.Packet;
 import com.chatapp.common.protocol.PacketBuilder;
@@ -12,110 +11,57 @@ public class AuthHandler {
     private final Logger logger = Logger.getInstance();
 
     public AuthHandler() {
-        this.authService = new AuthService();
+        this.authService = AuthService.getInstance();
     }
 
-    /**
-     * Handle login request
-     */
     public Packet handleLogin(Packet request) {
         try {
-            String username = request.getString("username");
-            String password = request.getString("password");
-
-            // Validate input
-            if (username == null || password == null) {
+            if (request == null) {
+                logger.error("Login request is null");
                 return PacketBuilder.create(MessageType.LOGIN_RESPONSE)
-                        .success(false)
-                        .error("Vui lòng nhập đầy đủ thông tin")
+                        .error("Invalid login request")
                         .build();
             }
 
-            // Login
-            User user = authService.login(username, password);
+            Packet response = authService.handleLogin(request);
 
-            // Return success response
-            return PacketBuilder.create(MessageType.LOGIN_RESPONSE)
-                    .success(true)
-                    .put("userId", user.getId())
-                    .put("username", user.getUsername())
-                    .put("email", user.getEmail())
-                    .put("fullName", user.getFullName())
-                    .put("avatarUrl", user.getAvatarUrl())
-                    .put("statusMessage", user.getStatusMessage())
-                    .build();
+            if (response == null) {
+                logger.error("AuthService.handleLogin returned null");
+                return PacketBuilder.create(MessageType.LOGIN_RESPONSE)
+                        .error("Internal server error (null response)")
+                        .build();
+            }
+
+            return response;
 
         } catch (Exception e) {
+            e.printStackTrace(); // in stack trace lên console
             logger.error("Login failed: " + e.getMessage(), e);
             return PacketBuilder.create(MessageType.LOGIN_RESPONSE)
-                    .success(false)
-                    .error(e.getMessage())
+                    .error(e.getMessage() != null ? e.getMessage() : "Internal server error")
                     .build();
         }
+
     }
 
-    /**
-     * Handle register request
-     */
     public Packet handleRegister(Packet request) {
         try {
-            String username = request.getString("username");
-            String email = request.getString("email");
-            String password = request.getString("password");
-            String fullName = request.getString("fullName");
-
-            // Validate input
-            if (username == null || email == null || password == null) {
-                return PacketBuilder.create(MessageType.REGISTER_RESPONSE)
-                        .success(false)
-                        .error("Vui lòng nhập đầy đủ thông tin")
-                        .build();
-            }
-
-            // Register
-            User user = authService.register(username, email, password, fullName);
-
-            // Return success response
-            return PacketBuilder.create(MessageType.REGISTER_RESPONSE)
-                    .success(true)
-                    .put("message", "Đăng ký thành công! Vui lòng đăng nhập.")
-                    .build();
-
+            return authService.handleRegister(request);
         } catch (Exception e) {
-            logger.error("Registration failed: " + e.getMessage(), e);
+            logger.error("Error handling register: " + e.getMessage(), e);
             return PacketBuilder.create(MessageType.REGISTER_RESPONSE)
-                    .success(false)
-                    .error(e.getMessage())
+                    .error("Server error: " + e.getMessage())
                     .build();
         }
     }
 
-    /**
-     * Handle logout request
-     */
     public Packet handleLogout(Packet request) {
         try {
-            Long userId = request.getLong("userId");
-
-            if (userId == null) {
-                return PacketBuilder.create(MessageType.LOGOUT_RESPONSE)
-                        .success(false)
-                        .error("Invalid user ID")
-                        .build();
-            }
-
-            // Logout
-            authService.logout(userId);
-
-            return PacketBuilder.create(MessageType.LOGOUT_RESPONSE)
-                    .success(true)
-                    .build();
-
+            return authService.handleLogout(request);
         } catch (Exception e) {
-            logger.error("Logout failed: " + e.getMessage(), e);
+            logger.error("Error handling logout: " + e.getMessage(), e);
             return PacketBuilder.create(MessageType.LOGOUT_RESPONSE)
-                    .success(false)
-                    .error(e.getMessage())
+                    .error("Server error: " + e.getMessage())
                     .build();
         }
     }

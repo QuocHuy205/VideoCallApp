@@ -7,9 +7,11 @@ import com.chatapp.common.protocol.PacketBuilder;
 import com.chatapp.client.network.ServerConnection;
 import com.chatapp.client.util.PreferenceManager;
 
+import java.util.Map;
+
 public class AuthService {
     private static AuthService instance;
-    private ServerConnection connection;
+    private final ServerConnection connection;
     private User currentUser;
 
     private AuthService() {
@@ -34,14 +36,24 @@ public class AuthService {
         Packet response = connection.sendAndReceive(request);
 
         if (response.isSuccess()) {
-            currentUser = new User();
-            currentUser.setId(response.getLong("userId"));
-            currentUser.setUsername(response.getString("username"));
-            currentUser.setEmail(response.getString("email"));
-            currentUser.setFullName(response.getString("fullName"));
+            Object userObj = response.get("user");
 
-            PreferenceManager.getInstance().setCurrentUser(currentUser);
-            System.out.println("[AUTH] Login successful: " + currentUser.getUsername());
+            if (userObj instanceof User) {
+                currentUser = (User) userObj;
+            } else if (userObj instanceof Map<?, ?> userMap) {
+                currentUser = new User();
+                currentUser.setId(((Number) userMap.get("id")).longValue());
+                currentUser.setUsername((String) userMap.get("username"));
+                currentUser.setEmail((String) userMap.get("email"));
+                currentUser.setFullName((String) userMap.get("fullName"));
+            }
+
+            if (currentUser != null) {
+                PreferenceManager.getInstance().setCurrentUser(currentUser);
+                System.out.println("[AUTH] Login successful: " + currentUser.getUsername());
+            } else {
+                System.out.println("[AUTH] Login warning: user data missing");
+            }
         } else {
             System.out.println("[AUTH] Login failed: " + response.getError());
         }

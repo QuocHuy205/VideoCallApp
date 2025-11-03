@@ -1,5 +1,7 @@
 package com.chatapp.server.core;
 
+import com.chatapp.server.network.ClientHandler;
+
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ClientRegistry {
@@ -22,19 +24,23 @@ public class ClientRegistry {
     }
 
     public void addClient(Long userId, ClientHandler handler) {
-        clients.put(userId, handler);
+        if (userId != null && handler != null) {
+            clients.put(userId, handler);
+        }
     }
 
     public void removeClient(Long userId) {
-        clients.remove(userId);
+        if (userId != null) {
+            clients.remove(userId);
+        }
     }
 
     public ClientHandler getClient(Long userId) {
-        return clients.get(userId);
+        return userId != null ? clients.get(userId) : null;
     }
 
     public boolean isOnline(Long userId) {
-        return clients.containsKey(userId);
+        return userId != null && clients.containsKey(userId);
     }
 
     public int getOnlineCount() {

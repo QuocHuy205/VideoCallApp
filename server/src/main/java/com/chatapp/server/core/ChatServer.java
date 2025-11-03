@@ -1,5 +1,6 @@
 package com.chatapp.server.core;
 
+import com.chatapp.server.network.ClientHandler;
 import com.chatapp.server.util.Logger;
 
 import java.io.IOException;

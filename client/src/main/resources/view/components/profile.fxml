@@ -31,13 +31,14 @@
 
     <Separator/>
 
+    <!-- Main Scroll Content -->
     <ScrollPane fitToWidth="true" styleClass="profile-scroll" VBox.vgrow="ALWAYS">
         <VBox spacing="20" styleClass="profile-content">
             <padding>
                 <Insets top="20" right="20" bottom="20" left="20"/>
             </padding>
 
-            <!-- Avatar Section -->
+            <!-- Avatar -->
             <VBox alignment="CENTER" spacing="15">
                 <StackPane styleClass="profile-avatar-container">
                     <Label fx:id="avatarLabel" text="U" styleClass="profile-avatar"/>
@@ -50,9 +51,10 @@
 
             <Separator/>
 
-            <!-- User Info Form -->
+            <!-- User Info -->
             <VBox spacing="15">
-                <!-- Username (read-only) -->
+
+                <!-- Username -->
                 <VBox spacing="5">
                     <Label text="Username" styleClass="profile-label"/>
                     <TextField fx:id="usernameField" editable="false"
@@ -88,41 +90,19 @@
                               styleClass="profile-combo" maxWidth="Infinity"/>
                 </VBox>
 
-                <!-- Account Info (read-only) -->
-                <Separator/>
-
-                <VBox spacing="5">
-                    <Label text="Account Created" styleClass="profile-label"/>
-                    <Label fx:id="createdAtLabel" text="-"
-                           styleClass="profile-info-text"/>
-                </VBox>
-
-                <VBox spacing="5">
-                    <Label text="Last Seen" styleClass="profile-label"/>
-                    <Label fx:id="lastSeenLabel" text="-"
-                           styleClass="profile-info-text"/>
-                </VBox>
-
-                <VBox spacing="5">
-                    <Label text="Connection Info" styleClass="profile-label"/>
-                    <Label fx:id="connectionInfoLabel" text="-"
-                           styleClass="profile-info-text"/>
-                </VBox>
             </VBox>
 
-            <!-- Action Buttons (hidden by default) -->
+            <!-- Action Buttons -->
             <HBox spacing="10" alignment="CENTER" fx:id="actionButtonsBox"
                   visible="false" managed="false">
-                <padding>
-                    <Insets top="10"/>
-                </padding>
+                <padding><Insets top="10"/></padding>
                 <Button text="Save Changes" styleClass="primary-button"
                         onAction="#saveProfile" prefWidth="150"/>
                 <Button text="Cancel" styleClass="secondary-button"
                         onAction="#cancelEdit" prefWidth="150"/>
             </HBox>
 
-            <!-- Change Password Section -->
+            <!-- Bottom Actions -->
             <Separator/>
             <Button text="Change Password" styleClass="secondary-button"
                     onAction="#openChangePassword" maxWidth="Infinity"/>

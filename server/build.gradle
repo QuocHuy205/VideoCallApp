@@ -8,6 +8,7 @@ dependencies {
     implementation 'com.zaxxer:HikariCP:5.0.1'
     implementation 'com.sun.mail:javax.mail:1.6.2'
     implementation 'commons-io:commons-io:2.15.0'
+    implementation 'org.mindrot:jbcrypt:0.4'
 }
 
 application {

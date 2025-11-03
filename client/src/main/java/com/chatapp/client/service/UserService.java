@@ -1,5 +1,6 @@
 package com.chatapp.client.service;
 
+import com.chatapp.client.util.PreferenceManager;
 import com.chatapp.common.model.User;
 import com.chatapp.common.protocol.Packet;
 import com.chatapp.common.protocol.PacketBuilder;
@@ -13,6 +14,7 @@ public class UserService {
 
     private static UserService instance;
     private ServerConnection connection;
+    private User currentUser;
 
     private UserService() {
         this.connection = ServerConnection.getInstance();
@@ -158,6 +160,15 @@ public class UserService {
         return response;
     }
 
+    public void logout() {
+        if (currentUser != null) {
+            System.out.println("[AUTH] Logout: " + currentUser.getUsername());
+            currentUser = null;
+            PreferenceManager.getInstance().clearCurrentUser();
+        }
+        connection.disconnect();
+    }
+
     /**
      * Get user information by ID from server
      * @param userId User ID
@@ -184,5 +195,9 @@ public class UserService {
         }
 
         return response;
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
     }
 }

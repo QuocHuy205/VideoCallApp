@@ -36,6 +36,68 @@ public class UserDAO {
     }
 
     /**
+     * Update user profile information
+     */
+    public void update(User user) throws SQLException {
+        String sql = "UPDATE users SET full_name = ?, email = ?, status_message = ?, " +
+                "status_type = ?, avatar_url = ? WHERE id = ?";
+
+        try (Connection conn = DatabaseManager.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, user.getFullName());
+            stmt.setString(2, user.getEmail());
+            stmt.setString(3, user.getStatusMessage());
+            stmt.setString(4, user.getStatusType().name());
+            stmt.setString(5, user.getAvatarUrl());
+            stmt.setLong(6, user.getId());
+
+            int rowsAffected = stmt.executeUpdate();
+            if (rowsAffected == 0) {
+                throw new SQLException("Update failed, user not found with id: " + user.getId());
+            }
+        }
+    }
+
+    /**
+     * Update user password
+     */
+    public void updatePassword(Long userId, String newPasswordHash) throws SQLException {
+        String sql = "UPDATE users SET password_hash = ? WHERE id = ?";
+
+        try (Connection conn = DatabaseManager.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, newPasswordHash);
+            stmt.setLong(2, userId);
+
+            int rowsAffected = stmt.executeUpdate();
+            if (rowsAffected == 0) {
+                throw new SQLException("Password update failed, user not found with id: " + userId);
+            }
+        }
+    }
+
+    /**
+     * Update avatar URL
+     */
+    public void updateAvatar(Long userId, String avatarUrl) throws SQLException {
+        String sql = "UPDATE users SET avatar_url = ? WHERE id = ?";
+
+        try (Connection conn = DatabaseManager.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, avatarUrl);
+            stmt.setLong(2, userId);
+
+            int rowsAffected = stmt.executeUpdate();
+            if (rowsAffected == 0) {
+                throw new SQLException("Avatar update failed, user not found with id: " + userId);
+            }
+        }
+    }
+
+    /**
      * Find user by username
      */
     public User findByUsername(String username) throws SQLException {
@@ -64,6 +126,25 @@ public class UserDAO {
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setLong(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return mapResultSetToUser(rs);
+            }
+            return null;
+        }
+    }
+
+    /**
+     * Find user by email
+     */
+    public User findByEmail(String email) throws SQLException {
+        String sql = "SELECT * FROM users WHERE email = ? AND is_active = TRUE";
+
+        try (Connection conn = DatabaseManager.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, email);
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
@@ -115,7 +196,7 @@ public class UserDAO {
      * Update user status
      */
     public void updateStatus(Long userId, User.UserStatus status, String ipAddress, Integer port) throws SQLException {
-        String sql = "UPDATE users SET status_type = ?, ip_address = ?, port = ? WHERE id = ?";
+        String sql = "UPDATE users SET status_type = ?, ip_address = ?, port = ?, last_seen = NOW() WHERE id = ?";
 
         try (Connection conn = DatabaseManager.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -130,6 +211,37 @@ public class UserDAO {
             stmt.setLong(4, userId);
 
             stmt.executeUpdate();
+        }
+    }
+
+    /**
+     * Update last seen timestamp
+     */
+    public void updateLastSeen(Long userId) throws SQLException {
+        String sql = "UPDATE users SET last_seen = NOW() WHERE id = ?";
+
+        try (Connection conn = DatabaseManager.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setLong(1, userId);
+            stmt.executeUpdate();
+        }
+    }
+
+    /**
+     * Soft delete user (set is_active = false)
+     */
+    public void softDelete(Long userId) throws SQLException {
+        String sql = "UPDATE users SET is_active = FALSE WHERE id = ?";
+
+        try (Connection conn = DatabaseManager.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setLong(1, userId);
+            int rowsAffected = stmt.executeUpdate();
+            if (rowsAffected == 0) {
+                throw new SQLException("Delete failed, user not found with id: " + userId);
+            }
         }
     }
 

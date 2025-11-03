@@ -6,12 +6,16 @@ import com.chatapp.common.model.User.UserStatus;
 import com.chatapp.common.protocol.Packet;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.collections.FXCollections;
+import javafx.stage.Window;
 
 import java.io.File;
 import java.net.URL;
@@ -231,16 +235,47 @@ public class ProfileController implements Initializable {
     @FXML
     private void logout() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Logout");
-        alert.setHeaderText("Are you sure you want to logout?");
-        alert.setContentText("You will be disconnected from the chat server.");
+        alert.setTitle("Đăng xuất");
+        alert.setHeaderText(null);
+        alert.setContentText("Bạn có chắc muốn đăng xuất?");
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            // TODO: Implement logout logic
-            // Close connection, clear session, redirect to login
-            System.out.println("Logging out...");
-            closeProfile();
+            new Thread(() -> {
+                try {
+                    System.out.println("[LOGOUT] ✅ Đang đăng xuất...");
+
+                    Platform.runLater(() -> {
+                        try {
+                            closeProfile();
+                            Stage stage = (Stage) Stage.getWindows().stream()
+                                    .filter(Window::isShowing)
+                                    .findFirst()
+                                    .orElse(null);
+
+                            if (stage != null) {
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login.fxml"));
+                                Parent root = loader.load();
+
+                                Scene scene = new Scene(root, 1000, 650);
+                                scene.getStylesheets().clear();
+                                scene.getStylesheets().add(getClass().getResource("/css/auth.css").toExternalForm());
+
+                                stage.setScene(scene);
+                                stage.setTitle("ChatApp - Đăng nhập");
+                                stage.setResizable(false);
+                                stage.centerOnScreen();
+                            }
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }).start();
         }
     }
 

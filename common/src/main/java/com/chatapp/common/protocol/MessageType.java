@@ -64,6 +64,6 @@ public enum MessageType {
     USER_ONLINE,
     USER_OFFLINE,
 
-    // Error
+    RESPONSE, // Error
     ERROR
 }
