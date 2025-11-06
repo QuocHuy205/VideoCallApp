@@ -19,6 +19,7 @@ public class User implements Serializable {
     private LocalDateTime createdAt;
     private LocalDateTime lastSeen;
     private boolean active;
+    private boolean isverified;
 
     public enum UserStatus {
         ONLINE, OFFLINE, BUSY
@@ -32,6 +33,7 @@ public class User implements Serializable {
         this.passwordHash = passwordHash;
         this.statusType = UserStatus.OFFLINE;
         this.active = true;
+        this.isverified = true;
     }
 
     // Getters and Setters
@@ -73,4 +75,7 @@ public class User implements Serializable {
 
     public boolean isActive() { return active; }
     public void setActive(boolean active) { this.active = active; }
+
+    public boolean isverified() { return isverified; }
+    public void setverified(boolean isverified) { this.isverified = isverified; }
 }

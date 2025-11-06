@@ -52,7 +52,11 @@ public class DatabaseManager {
 
     public Connection getConnection() throws SQLException {
         if (dataSource == null) {
-            throw new SQLException("DataSource not initialized");
+            synchronized (this) {
+                if (dataSource == null) {
+                    initialize(); // TỰ ĐỘNG KHỞI TẠO
+                }
+            }
         }
         return dataSource.getConnection();
     }

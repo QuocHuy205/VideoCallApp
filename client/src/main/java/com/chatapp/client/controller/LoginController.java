@@ -98,10 +98,10 @@ public class LoginController {
         }
     }
 
-    @FXML
-    private void handleForgotPassword() {
-        showInfo("Chức năng đang phát triển");
-    }
+//    @FXML
+//    private void handleForgotPassword() {
+//        showInfo("Chức năng đang phát triển");
+//    }
 
     private void showMainWindow() {
         try {
@@ -141,5 +141,24 @@ public class LoginController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    // Open Forgot Password window
+    @FXML
+    private void handleForgotPassword() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/forgot_password.fxml"));
+            loader.setController(new ForgotPasswordController()); // THÊM DÒNG NÀY
+            Parent root = loader.load();
+
+            Stage stage = (Stage) loginButton.getScene().getWindow();
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/css/auth.css").toExternalForm());
+            stage.setScene(scene);
+            stage.setTitle("Quên mật khẩu");
+            stage.centerOnScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

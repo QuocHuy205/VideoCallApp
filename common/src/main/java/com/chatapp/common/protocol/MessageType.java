@@ -16,6 +16,10 @@ public enum MessageType {
     FORGOT_PASSWORD_RESPONSE,
     VERIFY_OTP_REQUEST,
     VERIFY_OTP_RESPONSE,
+    RESEND_OTP_REQUEST,
+    RESEND_OTP_RESPONSE,
+    RESET_PASSWORD_REQUEST,      // THÊM
+    RESET_PASSWORD_RESPONSE,
 
     // User Profile Management - THÊM MỚI
     UPDATE_PROFILE_REQUEST,
@@ -66,4 +70,5 @@ public enum MessageType {
 
     // Error
     ERROR
+
 }

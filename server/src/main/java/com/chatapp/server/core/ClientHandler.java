@@ -93,6 +93,18 @@ public class ClientHandler implements Runnable {
                     }
                     return authHandler.handleLogout(request);
 
+                case VERIFY_OTP_REQUEST:
+                    return authHandler.handleVerifyOTP(request);
+
+                case RESEND_OTP_REQUEST:
+                    return authHandler.handleResendOTP(request);
+
+                case FORGOT_PASSWORD_REQUEST:
+                    return authHandler.handleForgotPassword(request);
+
+                case RESET_PASSWORD_REQUEST:
+                    return authHandler.handleResetPassword(request);
+
                 default:
                     Packet errorResponse = new Packet(MessageType.ERROR);
                     errorResponse.setError("Unknown message type: " + type);

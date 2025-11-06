@@ -2,18 +2,25 @@ package com.chatapp.server.database.dao;
 
 import com.chatapp.common.model.User;
 import com.chatapp.server.database.DatabaseManager;
+import com.chatapp.server.util.Logger;
 
 import java.sql.*;
 import java.time.LocalDateTime;
 
 public class UserDAO {
+    private final Logger logger = Logger.getInstance();
+    private final DatabaseManager dbManager;
+
+    public UserDAO() {
+        this.dbManager = DatabaseManager.getInstance();
+    }
 
     /**
      * Insert new user
      */
     public void insert(User user) throws SQLException {
-        String sql = "INSERT INTO users (username, email, password_hash, full_name, status_type, is_active) " +
-                "VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO users (username, email, password_hash, full_name, status_type, is_active, is_verified, created_at) " +
+                "VALUES (?, ?, ?, ?, ?, ?, 0, CURRENT_TIMESTAMP)";
 
         try (Connection conn = DatabaseManager.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -39,7 +46,7 @@ public class UserDAO {
      * Find user by username
      */
     public User findByUsername(String username) throws SQLException {
-        String sql = "SELECT * FROM users WHERE username = ? AND is_active = TRUE";
+        String sql = "SELECT * FROM users WHERE username = ? AND is_active = TRUE ";
 
         try (Connection conn = DatabaseManager.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -53,6 +60,26 @@ public class UserDAO {
             return null;
         }
     }
+
+    /**
+     * Find user by username
+     */
+    public User findByEmail(String username) throws SQLException {
+        String sql = "SELECT * FROM users WHERE email = ?";
+
+        try (Connection conn = DatabaseManager.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return mapResultSetToUser(rs);
+            }
+            return null;
+        }
+    }
+
 
     /**
      * Find user by ID
@@ -164,7 +191,108 @@ public class UserDAO {
         }
 
         user.setActive(rs.getBoolean("is_active"));
+        user.setverified(rs.getBoolean("is_verified"));
 
         return user;
     }
+
+    // Thăng làm
+
+    /**
+     * Xác thực user (đặt is_verified = 1)
+     */
+    public boolean verifyUser(long userId) {
+        String sql = "UPDATE users SET is_verified = 1 WHERE id = ?";
+
+        try (Connection conn = dbManager.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setLong(1, userId);
+            int rowsAffected = pstmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("✓ Xác thực user thành công (ID: " + userId + ")");
+                return true;
+            }
+
+        } catch (SQLException e) {
+            System.err.println("✗ Lỗi xác thực user: " + e.getMessage());
+        }
+
+        return false;
+    }
+    /**
+     * Kiểm tra user đã được xác thực chưa
+     */
+    public boolean isUserVerified(long userId) {
+        String sql = "SELECT is_verified FROM users WHERE id = ?";
+
+        try (Connection conn = dbManager.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setLong(1, userId);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("is_verified") == 1;
+            }
+
+        } catch (SQLException e) {
+            System.err.println("✗ Lỗi kiểm tra xác thực: " + e.getMessage());
+        }
+
+        return false;
+    }
+
+    /**
+     * Lấy email của user
+     */
+    public String getUserEmail(long userId) {
+        String sql = "SELECT email FROM users WHERE id = ?";
+
+        try (Connection conn = dbManager.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setLong(1, userId);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getString("email");
+            }
+
+        } catch (SQLException e) {
+            System.err.println("✗ Lỗi lấy email: " + e.getMessage());
+        }
+
+        return null;
+    }
+
+    public long createUserWithConn(Connection conn, String username, String email, String passwordHash, String fullName) throws SQLException {
+        String sql = "INSERT INTO users (username, email, password_hash, full_name, is_verified, is_active, created_at) " +
+                "VALUES (?, ?, ?, ?, 0, 1, CURRENT_TIMESTAMP)";
+        try (PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            ps.setString(1, username);
+            ps.setString(2, email);
+            ps.setString(3, passwordHash);
+            ps.setString(4, fullName);
+            ps.executeUpdate();
+            try (ResultSet rs = ps.getGeneratedKeys()) {
+                return rs.next() ? rs.getLong(1) : -1;
+            }
+        }
+    }
+
+    public boolean updatePassword(long userId, String passwordHash) {
+        String sql = "UPDATE users SET password_hash = ? WHERE id = ?";
+        try (Connection conn = dbManager.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, passwordHash);
+            ps.setLong(2, userId);
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            logger.error("Update password error: " + e.getMessage(), e);
+            return false;
+        }
+    }
+
 }

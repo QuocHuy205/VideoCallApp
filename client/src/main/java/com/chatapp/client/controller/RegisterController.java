@@ -61,8 +61,30 @@ public class RegisterController {
                 Packet response = authService.register(username, email, password, username);
                 Platform.runLater(() -> {
                     if (response.isSuccess()) {
-                        showSuccess("Đăng ký thành công! Vui lòng đăng nhập.");
-                        handleLogin();
+                        Platform.runLater(() -> {
+                            try {
+                                // Load OTP layout
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/otp.fxml"));
+                                loader.setController(new OtpController(username));
+                                Parent otpRoot = loader.load();
+
+                                // LẤY CỬA SỔ HIỆN TẠI
+                                Stage stage = (Stage) registerButton.getScene().getWindow();
+                                Scene scene = new Scene(otpRoot);
+
+                                // Dùng CSS giống register
+                                scene.getStylesheets().add(getClass().getResource("/css/auth.css").toExternalForm());
+
+                                stage.setScene(scene);
+                                stage.setTitle("Xác thực OTP");
+                                stage.centerOnScreen();
+
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                                showError("Không thể mở OTP");
+                            }
+                        });
+                        return;
                     } else {
                         showError(response.getError());
                         registerButton.setDisable(false);
