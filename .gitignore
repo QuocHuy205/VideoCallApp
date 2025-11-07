@@ -1,0 +1,24 @@
+# IntelliJ
+.idea/
+*.iml
+
+# Build output
+build/
+out/
+bin/
+logs/
+.gradle/
+
+# Compiled class files
+*.class
+*.jar
+*.war
+*.ear
+
+# Gradle caches
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# System files
+.DS_Store
+Thumbs.db
