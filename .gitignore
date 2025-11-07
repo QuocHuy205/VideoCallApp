@@ -14,6 +14,7 @@ logs/
 *.jar
 *.war
 *.ear
+*.bin
 
 # Gradle caches
 .gradle/
@@ -22,3 +23,8 @@ logs/
 # System files
 .DS_Store
 Thumbs.db
+
+
+# === Temporary ===
+tmp/
+*.tmp
