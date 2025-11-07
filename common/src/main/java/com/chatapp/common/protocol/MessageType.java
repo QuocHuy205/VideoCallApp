@@ -2,7 +2,7 @@ package com.chatapp.common.protocol;
 
 /**
  * Enum định nghĩa các loại message trong giao thức
- * CẬP NHẬT: Thêm các type mới cho chức năng profile
+ * CẬP NHẬT: Thêm các type mới cho chức năng profile và friend
  */
 public enum MessageType {
     // Authentication
@@ -17,7 +17,7 @@ public enum MessageType {
     VERIFY_OTP_REQUEST,
     VERIFY_OTP_RESPONSE,
 
-    // User Profile Management - THÊM MỚI
+    // User Profile Management
     UPDATE_PROFILE_REQUEST,
     UPDATE_PROFILE_RESPONSE,
     CHANGE_PASSWORD_REQUEST,
@@ -27,15 +27,23 @@ public enum MessageType {
     GET_USER_INFO_REQUEST,
     GET_USER_INFO_RESPONSE,
 
-    // Friend
+    // Friend Management - CẬP NHẬT MỚI
     ADD_FRIEND_REQUEST,
     ADD_FRIEND_RESPONSE,
     ACCEPT_FRIEND_REQUEST,
     ACCEPT_FRIEND_RESPONSE,
+    REJECT_FRIEND_REQUEST,
+    REJECT_FRIEND_RESPONSE,
+    UNFRIEND_REQUEST,
+    UNFRIEND_RESPONSE,
     BLOCK_FRIEND_REQUEST,
     BLOCK_FRIEND_RESPONSE,
     GET_FRIENDS_REQUEST,
     GET_FRIENDS_RESPONSE,
+    GET_PENDING_REQUESTS_REQUEST,
+    GET_PENDING_REQUESTS_RESPONSE,
+    SEARCH_USERS_REQUEST,
+    SEARCH_USERS_RESPONSE,
 
     // Chat
     SEND_MESSAGE_REQUEST,
@@ -64,6 +72,6 @@ public enum MessageType {
     USER_ONLINE,
     USER_OFFLINE,
 
-    RESPONSE, // Error
+    RESPONSE,
     ERROR
 }

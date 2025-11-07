@@ -1,6 +1,5 @@
 package com.chatapp.client.controller.component;
 
-import com.chatapp.client.controller.component.ProfileController;
 import com.chatapp.client.service.AuthService;
 import com.chatapp.common.model.User;
 import javafx.application.Platform;
@@ -12,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -33,6 +33,10 @@ public class SidebarMenuController {
     private Button activeButton;
     private AuthService authService;
 
+    // Containers từ MainController
+    private HBox chatListContainer;
+    private HBox chatViewContainer;
+
     @FXML
     public void initialize() {
         System.out.println("[SIDEBAR] Initialized");
@@ -45,10 +49,15 @@ public class SidebarMenuController {
 
         // Setup click handler for user profile card
         setupUserProfileClickHandler();
+    }
 
-        // Test buttons
-        if (chatsBtn != null) System.out.println("[SIDEBAR] Chats button found");
-        if (settingsBtn != null) System.out.println("[SIDEBAR] Settings button found");
+    /**
+     * Set containers để có thể switch giữa Chat và Contact view
+     */
+    public void setContainers(HBox chatListContainer, HBox chatViewContainer) {
+        this.chatListContainer = chatListContainer;
+        this.chatViewContainer = chatViewContainer;
+        System.out.println("[SIDEBAR] Containers set");
     }
 
     /**
@@ -70,7 +79,6 @@ public class SidebarMenuController {
      * Setup click handler cho user profile card để mở profile window
      */
     private void setupUserProfileClickHandler() {
-        // Tìm Button có styleClass "user-profile-card" trong sidebar
         if (sidebarContainer != null) {
             for (javafx.scene.Node node : sidebarContainer.getChildren()) {
                 if (node instanceof Button && node.getStyleClass().contains("user-profile-card")) {
@@ -90,32 +98,25 @@ public class SidebarMenuController {
 
         if (currentUser == null) {
             showError("Lỗi", "Không tìm thấy thông tin người dùng!");
-            System.err.println("[SIDEBAR] No user logged in!");
             return;
         }
 
         try {
             System.out.println("[SIDEBAR] Opening profile window for: " + currentUser.getUsername());
 
-            // Load FXML
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/view/components/profile.fxml")
             );
             Parent root = loader.load();
 
-            // Get controller và set user data
             ProfileController profileController = loader.getController();
             profileController.setUser(currentUser);
 
-            // Tạo Stage mới (modal window)
             Stage profileStage = new Stage();
             profileStage.setTitle("Hồ sơ người dùng");
             profileStage.initModality(Modality.APPLICATION_MODAL);
 
-            // Tạo scene
             Scene scene = new Scene(root, 500, 700);
-
-            // Apply stylesheet
             try {
                 scene.getStylesheets().add(
                         getClass().getResource("/css/main.css").toExternalForm()
@@ -126,32 +127,114 @@ public class SidebarMenuController {
 
             profileStage.setScene(scene);
             profileStage.setResizable(false);
-
-            // Hiển thị và đợi
             profileStage.showAndWait();
 
-            // Refresh user info sau khi đóng profile window
             loadUserInfo();
             System.out.println("[SIDEBAR] Profile window closed");
 
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("[SIDEBAR] Error opening profile window: " + e.getMessage());
             showError("Lỗi", "Không thể mở cửa sổ hồ sơ: " + e.getMessage());
         }
     }
 
+    /**
+     * Show Chats View
+     */
     @FXML
     private void showChats() {
         System.out.println("[SIDEBAR] ✅ Chats clicked!");
         setActiveButton(chatsBtn);
+
+        if (chatListContainer == null || chatViewContainer == null) {
+            System.err.println("[SIDEBAR] Containers not set!");
+            return;
+        }
+
+        try {
+            // Load Chat List
+            FXMLLoader chatListLoader = new FXMLLoader(
+                    getClass().getResource("/view/components/chat-list.fxml")
+            );
+            Parent chatList = chatListLoader.load();
+
+            // Load Chat View
+            FXMLLoader chatViewLoader = new FXMLLoader(
+                    getClass().getResource("/view/components/chat-view.fxml")
+            );
+            Parent chatView = chatViewLoader.load();
+
+            // Replace content
+            chatListContainer.getChildren().clear();
+            chatListContainer.getChildren().add(chatList);
+
+            chatViewContainer.getChildren().clear();
+            chatViewContainer.getChildren().add(chatView);
+
+            System.out.println("[SIDEBAR] Switched to Chats");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("[SIDEBAR] Failed to load Chats: " + e.getMessage());
+            showError("Lỗi", "Không thể tải giao diện Chat");
+        }
     }
 
+    /**
+     * Show Contacts View
+     */
     @FXML
     private void showContacts() {
         System.out.println("[SIDEBAR] ✅ Contacts clicked!");
         setActiveButton(contactsBtn);
-        showInfo("Danh bạ", "Đang phát triển...");
+
+        if (chatListContainer == null || chatViewContainer == null) {
+            System.err.println("[SIDEBAR] Containers not set!");
+            showError("Lỗi", "Containers chưa được khởi tạo!");
+            return;
+        }
+
+        try {
+            User currentUser = authService.getCurrentUser();
+            if (currentUser == null) {
+                showError("Lỗi", "Vui lòng đăng nhập lại!");
+                return;
+            }
+
+            // Load Contact List (friend-list.fxml)
+            FXMLLoader contactListLoader = new FXMLLoader(
+                    getClass().getResource("/view/components/friend-list.fxml")
+            );
+            Parent contactList = contactListLoader.load();
+
+            // Get controller and set current user
+            FriendListController contactListController = contactListLoader.getController();
+            contactListController.setCurrentUser(currentUser);
+
+            // Load Contact Detail View
+            FXMLLoader contactDetailLoader = new FXMLLoader(
+                    getClass().getResource("/view/components/contact-detail.fxml")
+            );
+            Parent contactDetail = contactDetailLoader.load();
+
+            // Get controller and set current user
+            ContactDetailController contactDetailController = contactDetailLoader.getController();
+            contactDetailController.setCurrentUser(currentUser);
+
+            // Replace content
+            chatListContainer.getChildren().clear();
+            chatListContainer.getChildren().add(contactList);
+
+            chatViewContainer.getChildren().clear();
+            chatViewContainer.getChildren().add(contactDetail);
+
+            System.out.println("[SIDEBAR] Switched to Contacts");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("[SIDEBAR] Failed to load Contacts: " + e.getMessage());
+            showError("Lỗi", "Không thể tải giao diện Contacts: " + e.getMessage());
+        }
     }
 
     @FXML
@@ -171,7 +254,6 @@ public class SidebarMenuController {
     @FXML
     private void openSettings() {
         System.out.println("[SIDEBAR] ✅ Settings clicked!");
-        setActiveButton(settingsBtn);
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Cài đặt");
@@ -187,7 +269,6 @@ public class SidebarMenuController {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent()) {
             if (result.get() == btnProfile) {
-                // Mở profile window
                 openProfileWindow();
             } else if (result.get() == btnLogout) {
                 handleLogout();
