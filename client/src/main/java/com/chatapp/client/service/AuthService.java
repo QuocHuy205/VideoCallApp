@@ -16,6 +16,7 @@ public class AuthService {
         this.connection = ServerConnection.getInstance();
     }
 
+    // comment
     public static AuthService getInstance() {
         if (instance == null) {
             instance = new AuthService();
