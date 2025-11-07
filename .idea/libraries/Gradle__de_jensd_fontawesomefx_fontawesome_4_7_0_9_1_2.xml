@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: de.jensd:fontawesomefx-fontawesome:4.7.0-9.1.2" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="de.jensd" artifactId="fontawesomefx-fontawesome" version="4.7.0-9.1.2" baseVersion="4.7.0-9.1.2" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/de.jensd/fontawesomefx-fontawesome/4.7.0-9.1.2/7773ab9426179280438f4a8b1d64b3913b0ead92/fontawesomefx-fontawesome-4.7.0-9.1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

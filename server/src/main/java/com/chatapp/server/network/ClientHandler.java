@@ -4,10 +4,11 @@ import com.chatapp.common.protocol.Packet;
 import com.chatapp.common.protocol.PacketBuilder;
 import com.chatapp.common.protocol.MessageType;
 import com.chatapp.common.util.JsonUtil;
+import com.chatapp.server.core.ClientRegistry;
+import com.chatapp.server.service.FriendService;
 import com.chatapp.server.service.UserService;
 import com.chatapp.server.service.AuthService;
 import com.chatapp.server.util.Logger;
-import com.chatapp.server.core.ClientRegistry;
 
 import java.io.*;
 import java.net.Socket;
@@ -46,17 +47,6 @@ public class ClientHandler implements Runnable {
                     Packet request = JsonUtil.fromJson(line, Packet.class);
                     Packet response = handleRequest(request);
 
-                    // Nếu login thành công, lưu vào ClientRegistry
-                    if (request.getType() == MessageType.LOGIN_REQUEST && response.isSuccess()) {
-                        Long userId = response.getData().get("user") != null
-                                ? ((com.chatapp.common.model.User) response.getData().get("user")).getId()
-                                : null;
-                        this.currentUserId = userId;
-                        if (userId != null) {
-                            ClientRegistry.getInstance().addClient(userId, this);
-                        }
-                    }
-
                     String responseJson = JsonUtil.toJson(response);
                     output.println(responseJson);
                     output.flush();
@@ -78,6 +68,9 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    /**
+     * Xử lý request và trả về response
+     */
     private Packet handleRequest(Packet request) {
         MessageType type = request.getType();
 
@@ -86,27 +79,55 @@ public class ClientHandler implements Runnable {
                 // Authentication
                 case LOGIN_REQUEST:
                     return authService.handleLogin(request);
+
                 case REGISTER_REQUEST:
                     return authService.handleRegister(request);
+
                 case LOGOUT_REQUEST:
-                    Packet logoutResp = authService.handleLogout(request);
-                    // Remove client khỏi registry khi logout
-                    if (currentUserId != null) {
-                        ClientRegistry.getInstance().removeClient(currentUserId);
-                    }
-                    return logoutResp;
+                    return authService.handleLogout(request);
 
                 // Profile Management
                 case UPDATE_PROFILE_REQUEST:
                     return userService.handleUpdateProfile(request);
+
                 case CHANGE_PASSWORD_REQUEST:
                     return userService.handleChangePassword(request);
+
                 case UPLOAD_AVATAR_REQUEST:
                     return userService.handleUploadAvatar(request);
+
                 case GET_USER_INFO_REQUEST:
                     return userService.handleGetUserInfo(request);
+
                 case STATUS_UPDATE:
                     return userService.handleStatusUpdate(request);
+
+                // Friend Management
+                case ADD_FRIEND_REQUEST:
+                    return FriendService.getInstance().handleSendFriendRequest(request);
+
+                case ACCEPT_FRIEND_REQUEST:
+                    return FriendService.getInstance().handleAcceptFriendRequest(request);
+
+                case REJECT_FRIEND_REQUEST:
+                    return FriendService.getInstance().handleRejectFriendRequest(request);
+
+                case UNFRIEND_REQUEST:
+                    return FriendService.getInstance().handleUnfriend(request);
+
+                case BLOCK_FRIEND_REQUEST:
+                    return FriendService.getInstance().handleBlockUser(request);
+
+                case GET_FRIENDS_REQUEST:
+                    return FriendService.getInstance().handleGetFriends(request);
+
+                case GET_PENDING_REQUESTS_REQUEST:
+                    return FriendService.getInstance().handleGetPendingRequests(request);
+
+                case SEARCH_USERS_REQUEST:
+                    return FriendService.getInstance().handleSearchUsers(request);
+
+                // TODO: Thêm các handler khác (Chat, File, Call...)
 
                 default:
                     return PacketBuilder.create(MessageType.ERROR)
@@ -126,9 +147,6 @@ public class ClientHandler implements Runnable {
             if (input != null) input.close();
             if (output != null) output.close();
             if (socket != null) socket.close();
-            if (currentUserId != null) {
-                ClientRegistry.getInstance().removeClient(currentUserId);
-            }
             logger.info("Client disconnected: " + socket.getInetAddress());
         } catch (IOException e) {
             logger.error("Error during cleanup: " + e.getMessage());
@@ -137,5 +155,9 @@ public class ClientHandler implements Runnable {
 
     public Long getCurrentUserId() {
         return currentUserId;
+    }
+
+    public void setCurrentUserId(Long userId) {
+        this.currentUserId = userId;
     }
 }
