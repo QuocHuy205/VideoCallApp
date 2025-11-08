@@ -1,0 +1,25 @@
+# Gradle
+.gradle/
+build/
+*/build/
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+
+# Java compiled
+*.class
+*.jar
+
+# Logs
+*.log
+
+# Temp files
+*.tmp
+*.bin
+*.lock
+
+# System
+.DS_Store
+Thumbs.db
