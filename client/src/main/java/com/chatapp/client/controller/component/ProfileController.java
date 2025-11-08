@@ -1,5 +1,6 @@
 package com.chatapp.client.controller.component;
 
+import com.chatapp.client.service.AuthService;
 import com.chatapp.client.service.UserService;
 import com.chatapp.common.model.User;
 import com.chatapp.common.model.User.UserStatus;
@@ -232,6 +233,8 @@ public class ProfileController implements Initializable {
         dialog.show();
     }
 
+    // Trong ProfileController.java - Method logout()
+
     @FXML
     private void logout() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -244,6 +247,18 @@ public class ProfileController implements Initializable {
             new Thread(() -> {
                 try {
                     System.out.println("[LOGOUT] ✅ Đang đăng xuất...");
+
+                    // ✅ Set status OFFLINE và logout
+                    UserService userService = UserService.getInstance();
+                    if (currentUser != null && currentUser.getId() != null) {
+                        // Set status OFFLINE trước khi logout
+                        userService.updateStatus(currentUser.getId(), User.UserStatus.OFFLINE);
+                        System.out.println("[LOGOUT] Status set to OFFLINE");
+                    }
+
+                    // Logout
+                    AuthService authService = AuthService.getInstance();
+                    authService.logout();
 
                     Platform.runLater(() -> {
                         try {
@@ -274,6 +289,9 @@ public class ProfileController implements Initializable {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                    Platform.runLater(() -> {
+                        showAlert(Alert.AlertType.ERROR, "Lỗi", "Không thể đăng xuất: " + e.getMessage());
+                    });
                 }
             }).start();
         }

@@ -33,7 +33,7 @@ public class SidebarMenuController {
     private Button activeButton;
     private AuthService authService;
 
-    // Containers từ MainController
+    // ✅ QUAN TRỌNG: Dùng HBox
     private HBox chatListContainer;
     private HBox chatViewContainer;
 
@@ -44,15 +44,12 @@ public class SidebarMenuController {
         activeButton = chatsBtn;
         authService = AuthService.getInstance();
 
-        // Load user info
         loadUserInfo();
-
-        // Setup click handler for user profile card
         setupUserProfileClickHandler();
     }
 
     /**
-     * Set containers để có thể switch giữa Chat và Contact view
+     * ✅ Set containers - NHẬN HBox
      */
     public void setContainers(HBox chatListContainer, HBox chatViewContainer) {
         this.chatListContainer = chatListContainer;
@@ -60,9 +57,6 @@ public class SidebarMenuController {
         System.out.println("[SIDEBAR] Containers set");
     }
 
-    /**
-     * Load và hiển thị thông tin user
-     */
     private void loadUserInfo() {
         User currentUser = authService.getCurrentUser();
         if (currentUser != null) {
@@ -75,9 +69,6 @@ public class SidebarMenuController {
         }
     }
 
-    /**
-     * Setup click handler cho user profile card để mở profile window
-     */
     private void setupUserProfileClickHandler() {
         if (sidebarContainer != null) {
             for (javafx.scene.Node node : sidebarContainer.getChildren()) {
@@ -90,9 +81,6 @@ public class SidebarMenuController {
         }
     }
 
-    /**
-     * Mở cửa sổ Profile
-     */
     private void openProfileWindow() {
         User currentUser = authService.getCurrentUser();
 
@@ -138,9 +126,6 @@ public class SidebarMenuController {
         }
     }
 
-    /**
-     * Show Chats View
-     */
     @FXML
     private void showChats() {
         System.out.println("[SIDEBAR] ✅ Chats clicked!");
@@ -152,19 +137,16 @@ public class SidebarMenuController {
         }
 
         try {
-            // Load Chat List
             FXMLLoader chatListLoader = new FXMLLoader(
                     getClass().getResource("/view/components/chat-list.fxml")
             );
             Parent chatList = chatListLoader.load();
 
-            // Load Chat View
             FXMLLoader chatViewLoader = new FXMLLoader(
                     getClass().getResource("/view/components/chat-view.fxml")
             );
             Parent chatView = chatViewLoader.load();
 
-            // Replace content
             chatListContainer.getChildren().clear();
             chatListContainer.getChildren().add(chatList);
 
@@ -180,9 +162,6 @@ public class SidebarMenuController {
         }
     }
 
-    /**
-     * Show Contacts View
-     */
     @FXML
     private void showContacts() {
         System.out.println("[SIDEBAR] ✅ Contacts clicked!");
@@ -201,27 +180,22 @@ public class SidebarMenuController {
                 return;
             }
 
-            // Load Contact List (friend-list.fxml)
             FXMLLoader contactListLoader = new FXMLLoader(
                     getClass().getResource("/view/components/friend-list.fxml")
             );
             Parent contactList = contactListLoader.load();
 
-            // Get controller and set current user
             FriendListController contactListController = contactListLoader.getController();
             contactListController.setCurrentUser(currentUser);
 
-            // Load Contact Detail View
             FXMLLoader contactDetailLoader = new FXMLLoader(
                     getClass().getResource("/view/components/contact-detail.fxml")
             );
             Parent contactDetail = contactDetailLoader.load();
 
-            // Get controller and set current user
             ContactDetailController contactDetailController = contactDetailLoader.getController();
             contactDetailController.setCurrentUser(currentUser);
 
-            // Replace content
             chatListContainer.getChildren().clear();
             chatListContainer.getChildren().add(contactList);
 
@@ -286,8 +260,21 @@ public class SidebarMenuController {
         if (result.isPresent() && result.get() == ButtonType.OK) {
             new Thread(() -> {
                 try {
+                    System.out.println("[SIDEBAR] ✅ Logging out...");
+
+                    User currentUser = authService.getCurrentUser();
+                    if (currentUser != null && currentUser.getId() != null) {
+                        try {
+                            com.chatapp.client.service.UserService userService =
+                                    com.chatapp.client.service.UserService.getInstance();
+                            userService.updateStatus(currentUser.getId(), User.UserStatus.OFFLINE);
+                            System.out.println("[SIDEBAR] Status set to OFFLINE");
+                        } catch (Exception e) {
+                            System.err.println("[SIDEBAR] Failed to set status OFFLINE: " + e.getMessage());
+                        }
+                    }
+
                     authService.logout();
-                    System.out.println("[SIDEBAR] ✅ Logged out");
 
                     Platform.runLater(() -> {
                         try {
@@ -311,6 +298,9 @@ public class SidebarMenuController {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                    Platform.runLater(() -> {
+                        showError("Lỗi", "Không thể đăng xuất: " + e.getMessage());
+                    });
                 }
             }).start();
         }

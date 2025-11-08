@@ -196,7 +196,10 @@ public class FriendListController implements Initializable {
         cell.getStyleClass().add("search-result-cell");
 
         // Avatar
-        StackPane avatarPane = createAvatar(friend.getFriendUsername(), friend.getFriendStatusType());
+        StackPane avatarPane = createAvatar(
+                friend.getFriendUsername(),
+                friend.getFriendStatusType() != null ? friend.getFriendStatusType() : User.UserStatus.OFFLINE
+        );
 
         // Info
         VBox infoBox = new VBox(4);
@@ -209,6 +212,8 @@ public class FriendListController implements Initializable {
         if (friend.getFriendStatusMessage() != null && !friend.getFriendStatusMessage().isEmpty()) {
             Label bioLabel = new Label(friend.getFriendStatusMessage());
             bioLabel.getStyleClass().add("contact-bio");
+            bioLabel.setWrapText(true);
+            bioLabel.setMaxWidth(200);
             infoBox.getChildren().addAll(nameLabel, usernameLabel, bioLabel);
         } else {
             infoBox.getChildren().addAll(nameLabel, usernameLabel);
@@ -218,17 +223,29 @@ public class FriendListController implements Initializable {
         // Add button
         Button addBtn = new Button("Add Friend");
         addBtn.getStyleClass().addAll("primary-button", "small-button");
-        addBtn.setOnAction(e -> {
-            User user = new User();
-            user.setId(friend.getFriendId());
-            user.setUsername(friend.getFriendUsername());
-            sendFriendRequest(user);
-        });
+        addBtn.setOnAction(e -> sendFriendRequestFromSearch(friend));
 
         cell.getChildren().addAll(avatarPane, infoBox, addBtn);
         return cell;
     }
 
+    private void sendFriendRequestFromSearch(Friend friend) {
+        new Thread(() -> {
+            try {
+                var response = friendService.sendFriendRequest(currentUser.getId(), friend.getFriendId());
+                Platform.runLater(() -> {
+                    if (response.isSuccess()) {
+                        showSuccess("Friend request sent to " + friend.getFriendFullName());
+                        contactListView.getItems().remove(friend);
+                    } else {
+                        showError(response.getError());
+                    }
+                });
+            } catch (Exception e) {
+                Platform.runLater(() -> showError("Failed: " + e.getMessage()));
+            }
+        }).start();
+    }
 
     /**
      * Tạo avatar với status indicator

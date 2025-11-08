@@ -15,8 +15,8 @@ public class MainController {
 
     @FXML private Button globalToggleBtn;
     @FXML private VBox sidebarContainer;
-    @FXML private HBox chatListContainer;     // Container chứa chat-list HOẶC friend-list
-    @FXML private HBox chatViewContainer;     // Container chứa chat-view HOẶC contact-detail
+    @FXML private HBox chatListContainer;
+    @FXML private HBox chatViewContainer;
 
     private boolean isSidebarVisible = false;
     private SidebarMenuController sidebarController;
@@ -25,29 +25,22 @@ public class MainController {
     public void initialize() {
         System.out.println("[MAIN] Main window initialized");
 
-        // Get current user
         AuthService authService = AuthService.getInstance();
         if (authService.getCurrentUser() != null) {
             System.out.println("[MAIN] User: " + authService.getCurrentUser().getUsername());
         }
 
-        // Load sidebar và set containers
         loadSidebar();
 
-        // Ẩn sidebar khi vừa vào
         if (sidebarContainer != null) {
             sidebarContainer.setVisible(false);
             sidebarContainer.setManaged(false);
             sidebarContainer.setTranslateX(-260);
         }
 
-        // Load default views (Chat List + Chat View)
         loadDefaultViews();
     }
 
-    /**
-     * Load sidebar và connect với containers
-     */
     private void loadSidebar() {
         try {
             FXMLLoader sidebarLoader = new FXMLLoader(
@@ -56,13 +49,11 @@ public class MainController {
             Parent sidebar = sidebarLoader.load();
             sidebarController = sidebarLoader.getController();
 
-            // QUAN TRỌNG: Set containers để sidebar có thể switch views
             if (sidebarController != null) {
                 sidebarController.setContainers(chatListContainer, chatViewContainer);
                 System.out.println("[MAIN] Sidebar controller connected with containers");
             }
 
-            // Clear existing content và add sidebar
             sidebarContainer.getChildren().clear();
             sidebarContainer.getChildren().add(sidebar);
 
@@ -74,19 +65,14 @@ public class MainController {
         }
     }
 
-    /**
-     * Load default views (Chat)
-     */
     private void loadDefaultViews() {
         try {
-            // Load Chat List
             FXMLLoader chatListLoader = new FXMLLoader(
                     getClass().getResource("/view/components/chat-list.fxml")
             );
             Parent chatList = chatListLoader.load();
             chatListContainer.getChildren().add(chatList);
 
-            // Load Chat View
             FXMLLoader chatViewLoader = new FXMLLoader(
                     getClass().getResource("/view/components/chat-view.fxml")
             );

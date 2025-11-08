@@ -1,17 +1,15 @@
 package com.chatapp.client.service;
 
-import com.chatapp.common.model.User;
-import com.chatapp.common.protocol.MessageType;
-import com.chatapp.common.protocol.Packet;
-import com.chatapp.common.protocol.PacketBuilder;
 import com.chatapp.client.network.ServerConnection;
 import com.chatapp.client.util.PreferenceManager;
-
-import java.util.Map;
+import com.chatapp.common.model.User;
+import com.chatapp.common.protocol.Packet;
+import com.chatapp.common.protocol.PacketBuilder;
+import com.chatapp.common.protocol.MessageType;
 
 public class AuthService {
     private static AuthService instance;
-    private final ServerConnection connection;
+    private ServerConnection connection;
     private User currentUser;
 
     private AuthService() {
@@ -20,13 +18,19 @@ public class AuthService {
 
     public static AuthService getInstance() {
         if (instance == null) {
-            instance = new AuthService();
+            synchronized (AuthService.class) {
+                if (instance == null) {
+                    instance = new AuthService();
+                }
+            }
         }
         return instance;
     }
 
     public Packet login(String username, String password) throws Exception {
-        System.out.println("[AUTH] Login attempt: " + username);
+        if (!connection.isConnected()) {
+            connection.connect("localhost", 8888);
+        }
 
         Packet request = PacketBuilder.create(MessageType.LOGIN_REQUEST)
                 .put("username", username)
@@ -36,33 +40,16 @@ public class AuthService {
         Packet response = connection.sendAndReceive(request);
 
         if (response.isSuccess()) {
-            Object userObj = response.get("user");
-
-            if (userObj instanceof User) {
-                currentUser = (User) userObj;
-            } else if (userObj instanceof Map<?, ?> userMap) {
-                currentUser = new User();
-                currentUser.setId(((Number) userMap.get("id")).longValue());
-                currentUser.setUsername((String) userMap.get("username"));
-                currentUser.setEmail((String) userMap.get("email"));
-                currentUser.setFullName((String) userMap.get("fullName"));
-            }
-
-            if (currentUser != null) {
-                PreferenceManager.getInstance().setCurrentUser(currentUser);
-                System.out.println("[AUTH] Login successful: " + currentUser.getUsername());
-            } else {
-                System.out.println("[AUTH] Login warning: user data missing");
-            }
-        } else {
-            System.out.println("[AUTH] Login failed: " + response.getError());
+            System.out.println("[AUTH] Login successful");
         }
 
         return response;
     }
 
     public Packet register(String username, String email, String password, String fullName) throws Exception {
-        System.out.println("[AUTH] Registration attempt: " + username);
+        if (!connection.isConnected()) {
+            connection.connect("localhost", 8888);
+        }
 
         Packet request = PacketBuilder.create(MessageType.REGISTER_REQUEST)
                 .put("username", username)
@@ -75,19 +62,39 @@ public class AuthService {
 
         if (response.isSuccess()) {
             System.out.println("[AUTH] Registration successful");
-        } else {
-            System.out.println("[AUTH] Registration failed: " + response.getError());
         }
 
         return response;
     }
 
-    public void logout() {
-        if (currentUser != null) {
-            System.out.println("[AUTH] Logout: " + currentUser.getUsername());
+    public void logout() throws Exception {
+        if (currentUser != null && connection.isConnected()) {
+            try {
+                System.out.println("[AUTH] Setting user status to OFFLINE...");
+
+                Packet statusRequest = PacketBuilder.create(MessageType.STATUS_UPDATE)
+                        .put("userId", currentUser.getId())
+                        .put("status", "OFFLINE")
+                        .build();
+
+                connection.sendAndReceive(statusRequest);
+
+                Packet logoutRequest = PacketBuilder.create(MessageType.LOGOUT_REQUEST)
+                        .put("userId", currentUser.getId())
+                        .build();
+
+                connection.sendAndReceive(logoutRequest);
+
+                System.out.println("[AUTH] Logout successful, status set to OFFLINE");
+
+            } catch (Exception e) {
+                System.err.println("[AUTH] Error during logout: " + e.getMessage());
+            }
+
             currentUser = null;
             PreferenceManager.getInstance().clearCurrentUser();
         }
+
         connection.disconnect();
     }
 
@@ -95,7 +102,10 @@ public class AuthService {
         return currentUser;
     }
 
-    public boolean isLoggedIn() {
-        return currentUser != null;
+    public void setCurrentUser(User user) {
+        this.currentUser = user;
+        if (user != null) {
+            PreferenceManager.getInstance().saveCurrentUser(user);
+        }
     }
 }
