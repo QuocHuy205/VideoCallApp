@@ -1,0 +1,712 @@
+2025-10-25 22:35:48.027 [main] INFO  ChatAppServer - ChatApp Server Starting...
+2025-10-25 22:35:48.046 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-25 22:35:48.240 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5d0a1059
+2025-10-25 22:35:48.241 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-25 22:35:48.241 [main] INFO  ChatAppServer - Database connection pool initialized
+2025-10-25 22:35:48.241 [main] INFO  ChatAppServer - Database initialized
+2025-10-25 22:42:05.803 [main] INFO  ChatAppServer - ChatApp Server Starting...
+2025-10-25 22:42:05.817 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-25 22:42:06.004 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@58cbafc2
+2025-10-25 22:42:06.007 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-25 22:42:06.007 [main] INFO  ChatAppServer - Database connection pool initialized
+2025-10-25 22:42:06.007 [main] INFO  ChatAppServer - Database initialized
+2025-10-25 22:42:13.932 [main] INFO  ChatAppServer - ChatApp Server Starting...
+2025-10-25 22:42:13.942 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-25 22:42:14.104 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@58cbafc2
+2025-10-25 22:42:14.106 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-25 22:42:14.106 [main] INFO  ChatAppServer - Database connection pool initialized
+2025-10-25 22:42:14.106 [main] INFO  ChatAppServer - Database initialized
+2025-10-25 22:46:40.535 [main] INFO  ChatAppServer - =================================
+2025-10-25 22:46:40.536 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-10-25 22:46:40.536 [main] INFO  ChatAppServer - =================================
+2025-10-25 22:46:40.536 [main] INFO  ChatAppServer - Initializing database connection...
+2025-10-25 22:46:40.545 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-25 22:46:40.711 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@58cbafc2
+2025-10-25 22:46:40.712 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-25 22:46:40.714 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-10-25 22:46:40.716 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-10-25 22:46:40.724 [main] INFO  ChatAppServer - Database connection established
+2025-10-25 22:46:40.724 [main] INFO  ChatAppServer - Starting chat server...
+2025-10-25 22:46:40.726 [main] INFO  ChatAppServer - Server started on port 8888
+2025-10-25 22:46:40.727 [main] INFO  ChatAppServer - Waiting for clients...
+2025-10-25 22:46:58.269 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-25 22:47:08.380 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-25 22:47:45.494 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-25 22:52:02.118 [Thread-1] ERROR ChatAppServer - Client handler error
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:35)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-25 22:53:28.237 [main] INFO  ChatAppServer - =================================
+2025-10-25 22:53:28.238 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-10-25 22:53:28.238 [main] INFO  ChatAppServer - =================================
+2025-10-25 22:53:28.238 [main] INFO  ChatAppServer - Initializing database connection...
+2025-10-25 22:53:28.247 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-25 22:53:28.412 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@58cbafc2
+2025-10-25 22:53:28.414 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-25 22:53:28.415 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-10-25 22:53:28.417 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-10-25 22:53:28.423 [main] INFO  ChatAppServer - Database connection established
+2025-10-25 22:53:28.423 [main] INFO  ChatAppServer - Starting chat server...
+2025-10-25 22:53:28.425 [main] INFO  ChatAppServer - Server started on port 8888
+2025-10-25 22:53:28.426 [main] INFO  ChatAppServer - Waiting for clients...
+2025-10-25 22:53:35.068 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-25 22:53:35.070 [Thread-1] INFO  ChatAppServer - Client handler started for: /127.0.0.1
+2025-10-25 22:53:51.829 [Thread-1] INFO  ChatAppServer - [SERVER] Raw received: {
+2025-10-25 22:53:51.860 [Thread-1] ERROR ChatAppServer - Error processing packet: Error parsing JSON
+java.lang.RuntimeException: Error parsing JSON
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:20)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.google.gson.JsonSyntaxException: java.io.EOFException: End of input at line 1 column 2 path $.
+	at com.google.gson.Gson.fromJson(Gson.java:1236)
+	at com.google.gson.Gson.fromJson(Gson.java:1137)
+	at com.google.gson.Gson.fromJson(Gson.java:1047)
+	at com.google.gson.Gson.fromJson(Gson.java:982)
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:18)
+	... 2 common frames omitted
+Caused by: java.io.EOFException: End of input at line 1 column 2 path $.
+	at com.google.gson.stream.JsonReader.nextNonWhitespace(JsonReader.java:1457)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:503)
+	at com.google.gson.stream.JsonReader.hasNext(JsonReader.java:422)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:387)
+	at com.google.gson.Gson.fromJson(Gson.java:1227)
+	... 6 common frames omitted
+2025-10-25 22:53:51.864 [Thread-1] INFO  ChatAppServer - [SERVER] Sending: {
+  "type": "ERROR",
+  "data": {},
+  "timestamp": 1761407631862,
+  "error": "Server error: Error parsing JSON",
+  "success": false
+}
+2025-10-25 22:53:51.864 [Thread-1] INFO  ChatAppServer - [SERVER] Raw received:   "type": "REGISTER_REQUEST",
+2025-10-25 22:53:51.864 [Thread-1] ERROR ChatAppServer - Error processing packet: Error parsing JSON
+java.lang.RuntimeException: Error parsing JSON
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:20)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 4 path $
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:397)
+	at com.google.gson.Gson.fromJson(Gson.java:1227)
+	at com.google.gson.Gson.fromJson(Gson.java:1137)
+	at com.google.gson.Gson.fromJson(Gson.java:1047)
+	at com.google.gson.Gson.fromJson(Gson.java:982)
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:18)
+	... 2 common frames omitted
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 4 path $
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:393)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:386)
+	... 7 common frames omitted
+2025-10-25 22:53:51.864 [Thread-1] INFO  ChatAppServer - [SERVER] Sending: {
+  "type": "ERROR",
+  "data": {},
+  "timestamp": 1761407631864,
+  "error": "Server error: Error parsing JSON",
+  "success": false
+}
+2025-10-25 22:53:51.864 [Thread-1] INFO  ChatAppServer - [SERVER] Raw received:   "data": {
+2025-10-25 22:53:51.864 [Thread-1] ERROR ChatAppServer - Error processing packet: Error parsing JSON
+java.lang.RuntimeException: Error parsing JSON
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:20)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 4 path $
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:397)
+	at com.google.gson.Gson.fromJson(Gson.java:1227)
+	at com.google.gson.Gson.fromJson(Gson.java:1137)
+	at com.google.gson.Gson.fromJson(Gson.java:1047)
+	at com.google.gson.Gson.fromJson(Gson.java:982)
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:18)
+	... 2 common frames omitted
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 4 path $
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:393)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:386)
+	... 7 common frames omitted
+2025-10-25 22:53:51.865 [Thread-1] INFO  ChatAppServer - [SERVER] Sending: {
+  "type": "ERROR",
+  "data": {},
+  "timestamp": 1761407631865,
+  "error": "Server error: Error parsing JSON",
+  "success": false
+}
+2025-10-25 22:53:51.865 [Thread-1] INFO  ChatAppServer - [SERVER] Raw received:     "password": "123456",
+2025-10-25 22:53:51.866 [Thread-1] ERROR ChatAppServer - Error processing packet: Error parsing JSON
+java.lang.RuntimeException: Error parsing JSON
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:20)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 6 path $
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:397)
+	at com.google.gson.Gson.fromJson(Gson.java:1227)
+	at com.google.gson.Gson.fromJson(Gson.java:1137)
+	at com.google.gson.Gson.fromJson(Gson.java:1047)
+	at com.google.gson.Gson.fromJson(Gson.java:982)
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:18)
+	... 2 common frames omitted
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 6 path $
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:393)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:386)
+	... 7 common frames omitted
+2025-10-25 22:53:51.866 [Thread-1] INFO  ChatAppServer - [SERVER] Sending: {
+  "type": "ERROR",
+  "data": {},
+  "timestamp": 1761407631866,
+  "error": "Server error: Error parsing JSON",
+  "success": false
+}
+2025-10-25 22:53:51.866 [Thread-1] INFO  ChatAppServer - [SERVER] Raw received:     "fullName": "huy",
+2025-10-25 22:53:51.867 [Thread-1] ERROR ChatAppServer - Error processing packet: Error parsing JSON
+java.lang.RuntimeException: Error parsing JSON
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:20)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 6 path $
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:397)
+	at com.google.gson.Gson.fromJson(Gson.java:1227)
+	at com.google.gson.Gson.fromJson(Gson.java:1137)
+	at com.google.gson.Gson.fromJson(Gson.java:1047)
+	at com.google.gson.Gson.fromJson(Gson.java:982)
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:18)
+	... 2 common frames omitted
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 6 path $
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:393)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:386)
+	... 7 common frames omitted
+2025-10-25 22:53:51.867 [Thread-1] INFO  ChatAppServer - [SERVER] Sending: {
+  "type": "ERROR",
+  "data": {},
+  "timestamp": 1761407631867,
+  "error": "Server error: Error parsing JSON",
+  "success": false
+}
+2025-10-25 22:53:51.868 [Thread-1] INFO  ChatAppServer - [SERVER] Raw received:     "email": "huy@gmail.com",
+2025-10-25 22:53:51.868 [Thread-1] ERROR ChatAppServer - Error processing packet: Error parsing JSON
+java.lang.RuntimeException: Error parsing JSON
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:20)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 6 path $
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:397)
+	at com.google.gson.Gson.fromJson(Gson.java:1227)
+	at com.google.gson.Gson.fromJson(Gson.java:1137)
+	at com.google.gson.Gson.fromJson(Gson.java:1047)
+	at com.google.gson.Gson.fromJson(Gson.java:982)
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:18)
+	... 2 common frames omitted
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 6 path $
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:393)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:386)
+	... 7 common frames omitted
+2025-10-25 22:53:51.868 [Thread-1] INFO  ChatAppServer - [SERVER] Sending: {
+  "type": "ERROR",
+  "data": {},
+  "timestamp": 1761407631868,
+  "error": "Server error: Error parsing JSON",
+  "success": false
+}
+2025-10-25 22:53:51.868 [Thread-1] INFO  ChatAppServer - [SERVER] Raw received:     "username": "huy"
+2025-10-25 22:53:51.868 [Thread-1] ERROR ChatAppServer - Error processing packet: Error parsing JSON
+java.lang.RuntimeException: Error parsing JSON
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:20)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 6 path $
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:397)
+	at com.google.gson.Gson.fromJson(Gson.java:1227)
+	at com.google.gson.Gson.fromJson(Gson.java:1137)
+	at com.google.gson.Gson.fromJson(Gson.java:1047)
+	at com.google.gson.Gson.fromJson(Gson.java:982)
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:18)
+	... 2 common frames omitted
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 6 path $
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:393)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:386)
+	... 7 common frames omitted
+2025-10-25 22:53:51.869 [Thread-1] INFO  ChatAppServer - [SERVER] Sending: {
+  "type": "ERROR",
+  "data": {},
+  "timestamp": 1761407631869,
+  "error": "Server error: Error parsing JSON",
+  "success": false
+}
+2025-10-25 22:53:51.869 [Thread-1] INFO  ChatAppServer - [SERVER] Raw received:   },
+2025-10-25 22:53:51.870 [Thread-1] ERROR ChatAppServer - Error processing packet: Error parsing JSON
+java.lang.RuntimeException: Error parsing JSON
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:20)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Expected value at line 1 column 3 path $
+	at com.google.gson.Gson.fromJson(Gson.java:1241)
+	at com.google.gson.Gson.fromJson(Gson.java:1137)
+	at com.google.gson.Gson.fromJson(Gson.java:1047)
+	at com.google.gson.Gson.fromJson(Gson.java:982)
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:18)
+	... 2 common frames omitted
+Caused by: com.google.gson.stream.MalformedJsonException: Expected value at line 1 column 3 path $
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1659)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:599)
+	at com.google.gson.stream.JsonReader.peek(JsonReader.java:433)
+	at com.google.gson.Gson.fromJson(Gson.java:1224)
+	... 6 common frames omitted
+2025-10-25 22:53:51.871 [Thread-1] INFO  ChatAppServer - [SERVER] Sending: {
+  "type": "ERROR",
+  "data": {},
+  "timestamp": 1761407631871,
+  "error": "Server error: Error parsing JSON",
+  "success": false
+}
+2025-10-25 22:53:51.871 [Thread-1] INFO  ChatAppServer - [SERVER] Raw received:   "timestamp": 1761407631792,
+2025-10-25 22:53:51.871 [Thread-1] ERROR ChatAppServer - Error processing packet: Error parsing JSON
+java.lang.RuntimeException: Error parsing JSON
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:20)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 4 path $
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:397)
+	at com.google.gson.Gson.fromJson(Gson.java:1227)
+	at com.google.gson.Gson.fromJson(Gson.java:1137)
+	at com.google.gson.Gson.fromJson(Gson.java:1047)
+	at com.google.gson.Gson.fromJson(Gson.java:982)
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:18)
+	... 2 common frames omitted
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 4 path $
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:393)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:386)
+	... 7 common frames omitted
+2025-10-25 22:53:51.871 [Thread-1] INFO  ChatAppServer - [SERVER] Sending: {
+  "type": "ERROR",
+  "data": {},
+  "timestamp": 1761407631871,
+  "error": "Server error: Error parsing JSON",
+  "success": false
+}
+2025-10-25 22:53:51.872 [Thread-1] INFO  ChatAppServer - [SERVER] Raw received:   "success": true
+2025-10-25 22:53:51.872 [Thread-1] ERROR ChatAppServer - Error processing packet: Error parsing JSON
+java.lang.RuntimeException: Error parsing JSON
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:20)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 4 path $
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:397)
+	at com.google.gson.Gson.fromJson(Gson.java:1227)
+	at com.google.gson.Gson.fromJson(Gson.java:1137)
+	at com.google.gson.Gson.fromJson(Gson.java:1047)
+	at com.google.gson.Gson.fromJson(Gson.java:982)
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:18)
+	... 2 common frames omitted
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 4 path $
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:393)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:386)
+	... 7 common frames omitted
+2025-10-25 22:53:51.873 [Thread-1] INFO  ChatAppServer - [SERVER] Sending: {
+  "type": "ERROR",
+  "data": {},
+  "timestamp": 1761407631872,
+  "error": "Server error: Error parsing JSON",
+  "success": false
+}
+2025-10-25 22:53:51.873 [Thread-1] INFO  ChatAppServer - [SERVER] Raw received: }
+2025-10-25 22:53:51.873 [Thread-1] ERROR ChatAppServer - Error processing packet: Error parsing JSON
+java.lang.RuntimeException: Error parsing JSON
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:20)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Expected value at line 1 column 1 path $
+	at com.google.gson.Gson.fromJson(Gson.java:1241)
+	at com.google.gson.Gson.fromJson(Gson.java:1137)
+	at com.google.gson.Gson.fromJson(Gson.java:1047)
+	at com.google.gson.Gson.fromJson(Gson.java:982)
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:18)
+	... 2 common frames omitted
+Caused by: com.google.gson.stream.MalformedJsonException: Expected value at line 1 column 1 path $
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1659)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:599)
+	at com.google.gson.stream.JsonReader.peek(JsonReader.java:433)
+	at com.google.gson.Gson.fromJson(Gson.java:1224)
+	... 6 common frames omitted
+2025-10-25 22:53:51.873 [Thread-1] INFO  ChatAppServer - [SERVER] Sending: {
+  "type": "ERROR",
+  "data": {},
+  "timestamp": 1761407631873,
+  "error": "Server error: Error parsing JSON",
+  "success": false
+}
+2025-10-25 22:54:06.700 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-25 22:54:06.701 [Thread-2] INFO  ChatAppServer - Client handler started for: /127.0.0.1
+2025-10-25 22:54:13.439 [Thread-2] INFO  ChatAppServer - [SERVER] Raw received: {
+2025-10-25 22:54:13.439 [Thread-2] ERROR ChatAppServer - Error processing packet: Error parsing JSON
+java.lang.RuntimeException: Error parsing JSON
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:20)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.google.gson.JsonSyntaxException: java.io.EOFException: End of input at line 1 column 2 path $.
+	at com.google.gson.Gson.fromJson(Gson.java:1236)
+	at com.google.gson.Gson.fromJson(Gson.java:1137)
+	at com.google.gson.Gson.fromJson(Gson.java:1047)
+	at com.google.gson.Gson.fromJson(Gson.java:982)
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:18)
+	... 2 common frames omitted
+Caused by: java.io.EOFException: End of input at line 1 column 2 path $.
+	at com.google.gson.stream.JsonReader.nextNonWhitespace(JsonReader.java:1457)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:503)
+	at com.google.gson.stream.JsonReader.hasNext(JsonReader.java:422)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:387)
+	at com.google.gson.Gson.fromJson(Gson.java:1227)
+	... 6 common frames omitted
+2025-10-25 22:54:13.440 [Thread-2] INFO  ChatAppServer - [SERVER] Sending: {
+  "type": "ERROR",
+  "data": {},
+  "timestamp": 1761407653439,
+  "error": "Server error: Error parsing JSON",
+  "success": false
+}
+2025-10-25 22:54:13.440 [Thread-2] INFO  ChatAppServer - [SERVER] Raw received:   "type": "LOGIN_REQUEST",
+2025-10-25 22:54:13.440 [Thread-2] ERROR ChatAppServer - Error processing packet: Error parsing JSON
+java.lang.RuntimeException: Error parsing JSON
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:20)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 4 path $
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:397)
+	at com.google.gson.Gson.fromJson(Gson.java:1227)
+	at com.google.gson.Gson.fromJson(Gson.java:1137)
+	at com.google.gson.Gson.fromJson(Gson.java:1047)
+	at com.google.gson.Gson.fromJson(Gson.java:982)
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:18)
+	... 2 common frames omitted
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 4 path $
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:393)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:386)
+	... 7 common frames omitted
+2025-10-25 22:54:13.440 [Thread-2] INFO  ChatAppServer - [SERVER] Sending: {
+  "type": "ERROR",
+  "data": {},
+  "timestamp": 1761407653440,
+  "error": "Server error: Error parsing JSON",
+  "success": false
+}
+2025-10-25 22:54:13.441 [Thread-2] INFO  ChatAppServer - [SERVER] Raw received:   "data": {
+2025-10-25 22:54:13.441 [Thread-2] ERROR ChatAppServer - Error processing packet: Error parsing JSON
+java.lang.RuntimeException: Error parsing JSON
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:20)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 4 path $
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:397)
+	at com.google.gson.Gson.fromJson(Gson.java:1227)
+	at com.google.gson.Gson.fromJson(Gson.java:1137)
+	at com.google.gson.Gson.fromJson(Gson.java:1047)
+	at com.google.gson.Gson.fromJson(Gson.java:982)
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:18)
+	... 2 common frames omitted
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 4 path $
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:393)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:386)
+	... 7 common frames omitted
+2025-10-25 22:54:13.441 [Thread-2] INFO  ChatAppServer - [SERVER] Sending: {
+  "type": "ERROR",
+  "data": {},
+  "timestamp": 1761407653441,
+  "error": "Server error: Error parsing JSON",
+  "success": false
+}
+2025-10-25 22:54:13.441 [Thread-2] INFO  ChatAppServer - [SERVER] Raw received:     "password": "123456",
+2025-10-25 22:54:13.441 [Thread-2] ERROR ChatAppServer - Error processing packet: Error parsing JSON
+java.lang.RuntimeException: Error parsing JSON
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:20)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 6 path $
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:397)
+	at com.google.gson.Gson.fromJson(Gson.java:1227)
+	at com.google.gson.Gson.fromJson(Gson.java:1137)
+	at com.google.gson.Gson.fromJson(Gson.java:1047)
+	at com.google.gson.Gson.fromJson(Gson.java:982)
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:18)
+	... 2 common frames omitted
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 6 path $
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:393)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:386)
+	... 7 common frames omitted
+2025-10-25 22:54:13.441 [Thread-2] INFO  ChatAppServer - [SERVER] Sending: {
+  "type": "ERROR",
+  "data": {},
+  "timestamp": 1761407653441,
+  "error": "Server error: Error parsing JSON",
+  "success": false
+}
+2025-10-25 22:54:13.441 [Thread-2] INFO  ChatAppServer - [SERVER] Raw received:     "username": "admin"
+2025-10-25 22:54:13.442 [Thread-2] ERROR ChatAppServer - Error processing packet: Error parsing JSON
+java.lang.RuntimeException: Error parsing JSON
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:20)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 6 path $
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:397)
+	at com.google.gson.Gson.fromJson(Gson.java:1227)
+	at com.google.gson.Gson.fromJson(Gson.java:1137)
+	at com.google.gson.Gson.fromJson(Gson.java:1047)
+	at com.google.gson.Gson.fromJson(Gson.java:982)
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:18)
+	... 2 common frames omitted
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 6 path $
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:393)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:386)
+	... 7 common frames omitted
+2025-10-25 22:54:13.442 [Thread-2] INFO  ChatAppServer - [SERVER] Sending: {
+  "type": "ERROR",
+  "data": {},
+  "timestamp": 1761407653442,
+  "error": "Server error: Error parsing JSON",
+  "success": false
+}
+2025-10-25 22:54:13.443 [Thread-2] INFO  ChatAppServer - [SERVER] Raw received:   },
+2025-10-25 22:54:13.443 [Thread-2] ERROR ChatAppServer - Error processing packet: Error parsing JSON
+java.lang.RuntimeException: Error parsing JSON
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:20)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Expected value at line 1 column 3 path $
+	at com.google.gson.Gson.fromJson(Gson.java:1241)
+	at com.google.gson.Gson.fromJson(Gson.java:1137)
+	at com.google.gson.Gson.fromJson(Gson.java:1047)
+	at com.google.gson.Gson.fromJson(Gson.java:982)
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:18)
+	... 2 common frames omitted
+Caused by: com.google.gson.stream.MalformedJsonException: Expected value at line 1 column 3 path $
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1659)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:599)
+	at com.google.gson.stream.JsonReader.peek(JsonReader.java:433)
+	at com.google.gson.Gson.fromJson(Gson.java:1224)
+	... 6 common frames omitted
+2025-10-25 22:54:13.443 [Thread-2] INFO  ChatAppServer - [SERVER] Sending: {
+  "type": "ERROR",
+  "data": {},
+  "timestamp": 1761407653443,
+  "error": "Server error: Error parsing JSON",
+  "success": false
+}
+2025-10-25 22:54:13.443 [Thread-2] INFO  ChatAppServer - [SERVER] Raw received:   "timestamp": 1761407653438,
+2025-10-25 22:54:13.444 [Thread-2] ERROR ChatAppServer - Error processing packet: Error parsing JSON
+java.lang.RuntimeException: Error parsing JSON
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:20)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 4 path $
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:397)
+	at com.google.gson.Gson.fromJson(Gson.java:1227)
+	at com.google.gson.Gson.fromJson(Gson.java:1137)
+	at com.google.gson.Gson.fromJson(Gson.java:1047)
+	at com.google.gson.Gson.fromJson(Gson.java:982)
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:18)
+	... 2 common frames omitted
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 4 path $
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:393)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:386)
+	... 7 common frames omitted
+2025-10-25 22:54:13.444 [Thread-2] INFO  ChatAppServer - [SERVER] Sending: {
+  "type": "ERROR",
+  "data": {},
+  "timestamp": 1761407653444,
+  "error": "Server error: Error parsing JSON",
+  "success": false
+}
+2025-10-25 22:54:13.444 [Thread-2] INFO  ChatAppServer - [SERVER] Raw received:   "success": true
+2025-10-25 22:54:13.447 [Thread-2] ERROR ChatAppServer - Error processing packet: Error parsing JSON
+java.lang.RuntimeException: Error parsing JSON
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:20)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 4 path $
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:397)
+	at com.google.gson.Gson.fromJson(Gson.java:1227)
+	at com.google.gson.Gson.fromJson(Gson.java:1137)
+	at com.google.gson.Gson.fromJson(Gson.java:1047)
+	at com.google.gson.Gson.fromJson(Gson.java:982)
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:18)
+	... 2 common frames omitted
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 4 path $
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:393)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:386)
+	... 7 common frames omitted
+2025-10-25 22:54:13.447 [Thread-2] INFO  ChatAppServer - [SERVER] Sending: {
+  "type": "ERROR",
+  "data": {},
+  "timestamp": 1761407653447,
+  "error": "Server error: Error parsing JSON",
+  "success": false
+}
+2025-10-25 22:54:13.448 [Thread-2] INFO  ChatAppServer - [SERVER] Raw received: }
+2025-10-25 22:54:13.448 [Thread-2] ERROR ChatAppServer - Error processing packet: Error parsing JSON
+java.lang.RuntimeException: Error parsing JSON
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:20)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Expected value at line 1 column 1 path $
+	at com.google.gson.Gson.fromJson(Gson.java:1241)
+	at com.google.gson.Gson.fromJson(Gson.java:1137)
+	at com.google.gson.Gson.fromJson(Gson.java:1047)
+	at com.google.gson.Gson.fromJson(Gson.java:982)
+	at com.chatapp.common.util.JsonUtil.fromJson(JsonUtil.java:18)
+	... 2 common frames omitted
+Caused by: com.google.gson.stream.MalformedJsonException: Expected value at line 1 column 1 path $
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1659)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:599)
+	at com.google.gson.stream.JsonReader.peek(JsonReader.java:433)
+	at com.google.gson.Gson.fromJson(Gson.java:1224)
+	... 6 common frames omitted
+2025-10-25 22:54:13.448 [Thread-2] INFO  ChatAppServer - [SERVER] Sending: {
+  "type": "ERROR",
+  "data": {},
+  "timestamp": 1761407653448,
+  "error": "Server error: Error parsing JSON",
+  "success": false
+}
+2025-10-25 22:54:29.949 [Thread-1] ERROR ChatAppServer - Client handler IO error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:37)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-25 22:54:29.949 [Thread-2] ERROR ChatAppServer - Client handler IO error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:37)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-25 23:04:20.576 [main] INFO  ChatAppServer - =================================
+2025-10-25 23:04:20.577 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-10-25 23:04:20.577 [main] INFO  ChatAppServer - =================================
+2025-10-25 23:04:20.577 [main] INFO  ChatAppServer - Initializing database connection...
+2025-10-25 23:04:20.585 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-25 23:04:20.745 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@58cbafc2
+2025-10-25 23:04:20.747 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-25 23:04:20.749 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-10-25 23:04:20.750 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-10-25 23:04:20.757 [main] INFO  ChatAppServer - Database connection established
+2025-10-25 23:04:20.758 [main] INFO  ChatAppServer - Starting chat server...
+2025-10-25 23:04:20.759 [main] INFO  ChatAppServer - Server started on port 8888
+2025-10-25 23:04:20.760 [main] INFO  ChatAppServer - Waiting for clients...
+2025-10-25 23:04:32.940 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-25 23:04:32.943 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-25 23:04:49.542 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"REGISTER_REQUEST","data":{"password":"123456","fullName":"huy","email":"huy@gmail.com","username":"huy"},"timestamp":1761408289503,"error":null,"success":true}
+2025-10-25 23:04:49.573 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: REGISTER_REQUEST
+2025-10-25 23:04:49.710 [Thread-1] INFO  ChatAppServer - New user registered: huy
+2025-10-25 23:04:49.713 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"REGISTER_RESPONSE","data":{"message":"Đăng ký thành công! Vui lòng đăng nhập."},"timestamp":1761408289710,"error":null,"success":true}
+2025-10-25 23:04:51.297 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-25 23:04:51.298 [Thread-2] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-25 23:04:57.046 [Thread-2] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1761408297046,"error":null,"success":true}
+2025-10-25 23:04:57.047 [Thread-2] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-25 23:04:57.113 [Thread-2] INFO  ChatAppServer - User logged in: huy
+2025-10-25 23:04:57.114 [Thread-2] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"huy","userId":2,"email":"huy@gmail.com","statusMessage":null,"username":"huy"},"timestamp":1761408297113,"error":null,"success":true}
+2025-10-25 23:04:58.758 [Thread-2] INFO  ChatAppServer - Client disconnected
+2025-10-25 23:04:58.766 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-25 23:04:58.767 [Thread-3] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-25 23:05:03.881 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-25 23:05:03.883 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-10-25 23:05:03.881 [Thread-3] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-25 23:05:03.888 [Thread-3] INFO  ChatAppServer - Client disconnected
+2025-10-25 23:06:15.151 [main] INFO  ChatAppServer - =================================
+2025-10-25 23:06:15.153 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-10-25 23:06:15.153 [main] INFO  ChatAppServer - =================================
+2025-10-25 23:06:15.153 [main] INFO  ChatAppServer - Initializing database connection...
+2025-10-25 23:06:15.164 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-25 23:06:15.339 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@58cbafc2
+2025-10-25 23:06:15.339 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-25 23:06:15.339 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-10-25 23:06:15.349 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-10-25 23:06:15.351 [main] INFO  ChatAppServer - Database connection established
+2025-10-25 23:06:15.351 [main] INFO  ChatAppServer - Starting chat server...
+2025-10-25 23:06:15.355 [main] INFO  ChatAppServer - Server started on port 8888
+2025-10-25 23:06:15.355 [main] INFO  ChatAppServer - Waiting for clients...
+2025-10-25 23:06:24.512 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-25 23:06:24.515 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-25 23:06:30.512 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"1213456","username":"huy"},"timestamp":1761408390471,"error":null,"success":true}
+2025-10-25 23:06:30.543 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-25 23:06:30.632 [Thread-1] ERROR ChatAppServer - Login failed: Tên đăng nhập hoặc mật khẩu không đúng
+java.lang.Exception: Tên đăng nhập hoặc mật khẩu không đúng
+	at com.chatapp.server.service.AuthService.login(AuthService.java:77)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:35)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-25 23:06:30.637 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1761408390635,"error":"Tên đăng nhập hoặc mật khẩu không đúng","success":false}
+2025-10-25 23:06:35.949 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1761408395948,"error":null,"success":true}
+2025-10-25 23:06:35.950 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-10-25 23:06:36.012 [Thread-1] INFO  ChatAppServer - User logged in: huy
+2025-10-25 23:06:36.012 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"huy","userId":2,"email":"huy@gmail.com","statusMessage":null,"username":"huy"},"timestamp":1761408396012,"error":null,"success":true}
+2025-10-25 23:24:08.902 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-10-25 23:24:08.913 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-10-25 23:24:08.913 [Thread-2] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-10-25 23:24:33.686 [Thread-2] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-10-25 23:24:33.692 [Thread-2] INFO  ChatAppServer - Client disconnected

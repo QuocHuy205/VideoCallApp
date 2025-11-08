@@ -1,0 +1,1404 @@
+2025-11-03 16:00:48.906 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:00:48.912 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 16:00:48.912 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:00:48.912 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 16:00:48.925 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 16:00:49.191 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@53fb3dab
+2025-11-03 16:00:49.191 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-03 16:00:49.197 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-11-03 16:00:49.202 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-11-03 16:00:49.211 [main] INFO  ChatAppServer - Database connection established
+2025-11-03 16:00:49.213 [main] INFO  ChatAppServer - Starting chat server...
+2025-11-03 16:00:49.215 [main] INFO  ChatAppServer - Server started on port 8888
+2025-11-03 16:00:49.215 [main] INFO  ChatAppServer - Waiting for clients...
+2025-11-03 16:00:51.408 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 16:00:51.420 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 16:01:47.234 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"REGISTER_REQUEST","data":{"password":"123456","fullName":"thang","email":"nguyenduythang2808@gmail.com","username":"thang"},"timestamp":1762160507197,"error":null,"success":true}
+2025-11-03 16:01:47.259 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: REGISTER_REQUEST
+2025-11-03 16:01:53.236 [Thread-1] INFO  ChatAppServer - New user registered: thang
+2025-11-03 16:01:53.238 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"REGISTER_RESPONSE","data":{"message":"Đăng ký thành công! Vui lòng đăng nhập."},"timestamp":1762160513237,"error":null,"success":true}
+2025-11-03 16:01:55.498 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 16:01:55.498 [Thread-2] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 16:02:02.740 [Thread-2] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"thang"},"timestamp":1762160522739,"error":null,"success":true}
+2025-11-03 16:02:02.740 [Thread-2] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:02:02.803 [Thread-2] ERROR ChatAppServer - Login failed: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+java.lang.Exception: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+	at com.chatapp.server.service.AuthService.login(AuthService.java:125)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:02:02.805 [Thread-2] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762160522805,"error":"Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.","success":false}
+2025-11-03 16:02:05.746 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:02:05.746 [Thread-2] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:02:05.746 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-11-03 16:02:05.746 [Thread-2] INFO  ChatAppServer - Client disconnected
+2025-11-03 16:04:44.425 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:04:44.429 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 16:04:44.429 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:04:44.429 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 16:04:44.438 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 16:04:44.584 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74e28667
+2025-11-03 16:04:44.586 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-03 16:04:44.586 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-11-03 16:04:44.588 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-11-03 16:04:44.595 [main] INFO  ChatAppServer - Database connection established
+2025-11-03 16:04:44.595 [main] INFO  ChatAppServer - Starting chat server...
+2025-11-03 16:04:44.595 [main] INFO  ChatAppServer - Server started on port 8888
+2025-11-03 16:04:44.595 [main] INFO  ChatAppServer - Waiting for clients...
+2025-11-03 16:04:53.193 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 16:04:53.200 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 16:05:00.478 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1762160700444,"error":null,"success":true}
+2025-11-03 16:05:00.510 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:05:00.596 [Thread-1] ERROR ChatAppServer - Login failed: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+java.lang.Exception: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+	at com.chatapp.server.service.AuthService.login(AuthService.java:125)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:05:00.601 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762160700599,"error":"Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.","success":false}
+2025-11-03 16:05:49.043 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"thang"},"timestamp":1762160749042,"error":null,"success":true}
+2025-11-03 16:05:49.043 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:05:49.102 [Thread-1] ERROR ChatAppServer - Login failed: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+java.lang.Exception: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+	at com.chatapp.server.service.AuthService.login(AuthService.java:125)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:05:49.102 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762160749102,"error":"Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.","success":false}
+2025-11-03 16:05:51.646 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:05:51.653 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-11-03 16:05:59.066 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:05:59.066 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 16:05:59.066 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:05:59.066 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 16:05:59.075 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 16:05:59.227 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74e28667
+2025-11-03 16:05:59.229 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-03 16:05:59.229 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-11-03 16:05:59.229 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-11-03 16:05:59.236 [main] INFO  ChatAppServer - Database connection established
+2025-11-03 16:05:59.236 [main] INFO  ChatAppServer - Starting chat server...
+2025-11-03 16:05:59.238 [main] INFO  ChatAppServer - Server started on port 8888
+2025-11-03 16:05:59.238 [main] INFO  ChatAppServer - Waiting for clients...
+2025-11-03 16:06:02.746 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 16:06:02.752 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 16:06:08.319 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"thang"},"timestamp":1762160768283,"error":null,"success":true}
+2025-11-03 16:06:08.349 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:06:08.436 [Thread-1] ERROR ChatAppServer - Login failed: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+java.lang.Exception: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+	at com.chatapp.server.service.AuthService.login(AuthService.java:125)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:06:08.440 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762160768438,"error":"Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.","success":false}
+2025-11-03 16:06:13.065 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:06:13.065 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-11-03 16:07:00.218 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:07:00.218 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 16:07:00.218 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:07:00.218 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 16:07:00.229 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 16:07:00.386 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74e28667
+2025-11-03 16:07:00.386 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-03 16:07:00.386 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-11-03 16:07:00.386 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-11-03 16:07:00.397 [main] INFO  ChatAppServer - Database connection established
+2025-11-03 16:07:00.397 [main] INFO  ChatAppServer - Starting chat server...
+2025-11-03 16:07:00.399 [main] INFO  ChatAppServer - Server started on port 8888
+2025-11-03 16:07:00.399 [main] INFO  ChatAppServer - Waiting for clients...
+2025-11-03 16:07:08.505 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 16:07:08.513 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 16:07:15.167 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"thang"},"timestamp":1762160835132,"error":null,"success":true}
+2025-11-03 16:07:15.200 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:07:15.285 [Thread-1] INFO  ChatAppServer - User logged in: thang
+2025-11-03 16:07:15.288 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"thang","userId":11,"email":"nguyenduythang2808@gmail.com","statusMessage":null,"username":"thang"},"timestamp":1762160835286,"error":null,"success":true}
+2025-11-03 16:07:17.376 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:07:17.378 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-11-03 16:07:24.363 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 16:07:24.364 [Thread-2] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 16:07:29.670 [Thread-2] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1762160849636,"error":null,"success":true}
+2025-11-03 16:07:29.671 [Thread-2] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:07:29.728 [Thread-2] INFO  ChatAppServer - User logged in: huy
+2025-11-03 16:07:29.729 [Thread-2] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"huy","userId":2,"email":"huy@gmail.com","statusMessage":null,"username":"huy"},"timestamp":1762160849729,"error":null,"success":true}
+2025-11-03 16:07:31.849 [Thread-2] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:07:31.851 [Thread-2] INFO  ChatAppServer - Client disconnected
+2025-11-03 16:09:32.905 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:09:32.908 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 16:09:32.909 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:09:32.909 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 16:09:32.925 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 16:09:33.217 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74e28667
+2025-11-03 16:09:33.220 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-03 16:09:33.222 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-11-03 16:09:33.228 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-11-03 16:09:33.242 [main] INFO  ChatAppServer - Database connection established
+2025-11-03 16:09:33.245 [main] INFO  ChatAppServer - Starting chat server...
+2025-11-03 16:09:33.255 [main] INFO  ChatAppServer - Server started on port 8888
+2025-11-03 16:09:33.255 [main] INFO  ChatAppServer - Waiting for clients...
+2025-11-03 16:09:41.451 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 16:09:41.461 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 16:09:48.105 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1762160988073,"error":null,"success":true}
+2025-11-03 16:09:48.141 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:09:48.225 [Thread-1] ERROR ChatAppServer - Login failed: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+java.lang.Exception: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+	at com.chatapp.server.service.AuthService.login(AuthService.java:125)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:09:48.230 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762160988227,"error":"Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.","success":false}
+2025-11-03 16:09:54.730 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"thang"},"timestamp":1762160994729,"error":null,"success":true}
+2025-11-03 16:09:54.730 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:09:54.788 [Thread-1] ERROR ChatAppServer - Login failed: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+java.lang.Exception: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+	at com.chatapp.server.service.AuthService.login(AuthService.java:125)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:09:54.789 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762160994789,"error":"Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.","success":false}
+2025-11-03 16:09:57.531 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"12345","username":"thang"},"timestamp":1762160997530,"error":null,"success":true}
+2025-11-03 16:09:57.531 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:09:57.589 [Thread-1] ERROR ChatAppServer - Login failed: Tên đăng nhập hoặc mật khẩu không đúng
+java.lang.Exception: Tên đăng nhập hoặc mật khẩu không đúng
+	at com.chatapp.server.service.AuthService.login(AuthService.java:116)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:09:57.589 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762160997589,"error":"Tên đăng nhập hoặc mật khẩu không đúng","success":false}
+2025-11-03 16:10:00.195 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"thang"},"timestamp":1762161000195,"error":null,"success":true}
+2025-11-03 16:10:00.197 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:10:00.254 [Thread-1] ERROR ChatAppServer - Login failed: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+java.lang.Exception: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+	at com.chatapp.server.service.AuthService.login(AuthService.java:125)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:10:00.255 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762161000255,"error":"Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.","success":false}
+2025-11-03 16:10:08.310 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1762161008309,"error":null,"success":true}
+2025-11-03 16:10:08.310 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:10:08.368 [Thread-1] ERROR ChatAppServer - Login failed: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+java.lang.Exception: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+	at com.chatapp.server.service.AuthService.login(AuthService.java:125)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:10:08.369 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762161008368,"error":"Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.","success":false}
+2025-11-03 16:10:11.697 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:10:11.697 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-11-03 16:14:10.552 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:14:10.553 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 16:14:10.553 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:14:10.553 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 16:14:10.562 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 16:14:10.702 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74e28667
+2025-11-03 16:14:10.705 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-03 16:14:10.705 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-11-03 16:14:10.708 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-11-03 16:14:10.714 [main] INFO  ChatAppServer - Database connection established
+2025-11-03 16:14:10.714 [main] INFO  ChatAppServer - Starting chat server...
+2025-11-03 16:14:10.716 [main] INFO  ChatAppServer - Server started on port 8888
+2025-11-03 16:14:10.716 [main] INFO  ChatAppServer - Waiting for clients...
+2025-11-03 16:14:18.353 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 16:14:18.360 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 16:14:24.408 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1762161264372,"error":null,"success":true}
+2025-11-03 16:14:24.442 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:14:24.526 [Thread-1] ERROR ChatAppServer - Login failed: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+java.lang.Exception: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+	at com.chatapp.server.service.AuthService.login(AuthService.java:125)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:14:24.531 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762161264527,"error":"Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.","success":false}
+2025-11-03 16:14:29.693 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"thang"},"timestamp":1762161269691,"error":null,"success":true}
+2025-11-03 16:14:29.693 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:14:29.751 [Thread-1] ERROR ChatAppServer - Login failed: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+java.lang.Exception: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+	at com.chatapp.server.service.AuthService.login(AuthService.java:125)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:14:29.751 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762161269751,"error":"Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.","success":false}
+2025-11-03 16:14:36.070 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:14:36.070 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-11-03 16:14:51.968 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:14:51.969 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 16:14:51.969 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:14:51.969 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 16:14:51.978 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 16:14:52.131 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74e28667
+2025-11-03 16:14:52.131 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-03 16:14:52.134 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-11-03 16:14:52.134 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-11-03 16:14:52.139 [main] INFO  ChatAppServer - Database connection established
+2025-11-03 16:14:52.142 [main] INFO  ChatAppServer - Starting chat server...
+2025-11-03 16:14:52.144 [main] INFO  ChatAppServer - Server started on port 8888
+2025-11-03 16:14:52.144 [main] INFO  ChatAppServer - Waiting for clients...
+2025-11-03 16:14:54.131 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 16:14:54.136 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 16:15:00.136 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1762161300103,"error":null,"success":true}
+2025-11-03 16:15:00.166 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:15:00.243 [Thread-1] ERROR ChatAppServer - Login failed: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+java.lang.Exception: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+	at com.chatapp.server.service.AuthService.login(AuthService.java:125)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:15:00.248 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762161300245,"error":"Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.","success":false}
+2025-11-03 16:15:09.320 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1762161309320,"error":null,"success":true}
+2025-11-03 16:15:09.320 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:15:09.375 [Thread-1] ERROR ChatAppServer - Login failed: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+java.lang.Exception: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+	at com.chatapp.server.service.AuthService.login(AuthService.java:125)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:15:09.378 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762161309378,"error":"Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.","success":false}
+2025-11-03 16:15:20.853 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"thang"},"timestamp":1762161320853,"error":null,"success":true}
+2025-11-03 16:15:20.853 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:15:20.909 [Thread-1] ERROR ChatAppServer - Login failed: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+java.lang.Exception: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+	at com.chatapp.server.service.AuthService.login(AuthService.java:125)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:15:20.909 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762161320909,"error":"Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.","success":false}
+2025-11-03 16:15:54.806 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:15:54.808 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 16:15:54.808 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:15:54.808 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 16:15:54.820 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 16:15:55.003 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74e28667
+2025-11-03 16:15:55.003 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-03 16:15:55.007 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-11-03 16:15:55.009 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-11-03 16:15:55.017 [main] INFO  ChatAppServer - Database connection established
+2025-11-03 16:15:55.017 [main] INFO  ChatAppServer - Starting chat server...
+2025-11-03 16:15:55.018 [main] INFO  ChatAppServer - Server started on port 8888
+2025-11-03 16:15:55.018 [main] INFO  ChatAppServer - Waiting for clients...
+2025-11-03 16:16:17.818 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 16:16:17.826 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 16:16:28.208 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"thang"},"timestamp":1762161388173,"error":null,"success":true}
+2025-11-03 16:16:28.244 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:16:28.329 [Thread-1] INFO  ChatAppServer - User logged in: thang
+2025-11-03 16:16:28.332 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"thang","userId":11,"email":"nguyenduythang2808@gmail.com","statusMessage":null,"username":"thang"},"timestamp":1762161388330,"error":null,"success":true}
+2025-11-03 16:17:04.469 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:17:04.472 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-11-03 16:17:15.743 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:17:15.745 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 16:17:15.745 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:17:15.745 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 16:17:15.756 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 16:17:15.938 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74e28667
+2025-11-03 16:17:15.940 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-03 16:17:15.942 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-11-03 16:17:15.944 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-11-03 16:17:15.953 [main] INFO  ChatAppServer - Database connection established
+2025-11-03 16:17:15.953 [main] INFO  ChatAppServer - Starting chat server...
+2025-11-03 16:17:15.955 [main] INFO  ChatAppServer - Server started on port 8888
+2025-11-03 16:17:15.956 [main] INFO  ChatAppServer - Waiting for clients...
+2025-11-03 16:17:24.824 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 16:17:24.833 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 16:17:31.623 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"thang"},"timestamp":1762161451589,"error":null,"success":true}
+2025-11-03 16:17:31.652 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:17:31.730 [Thread-1] ERROR ChatAppServer - Login failed: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+java.lang.Exception: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+	at com.chatapp.server.service.AuthService.login(AuthService.java:125)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:17:31.735 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762161451732,"error":"Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.","success":false}
+2025-11-03 16:21:43.577 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:21:43.577 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-11-03 16:44:25.856 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:44:25.858 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 16:44:25.858 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:44:25.858 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 16:44:25.860 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 16:44:26.009 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74e28667
+2025-11-03 16:44:26.009 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-03 16:44:26.009 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-11-03 16:44:26.020 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-11-03 16:44:26.029 [main] INFO  ChatAppServer - Database connection established
+2025-11-03 16:44:26.029 [main] INFO  ChatAppServer - Starting chat server...
+2025-11-03 16:44:26.031 [main] INFO  ChatAppServer - Server started on port 8888
+2025-11-03 16:44:26.031 [main] INFO  ChatAppServer - Waiting for clients...
+2025-11-03 16:44:35.173 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 16:44:35.181 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 16:44:48.129 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1762163088090,"error":null,"success":true}
+2025-11-03 16:44:48.158 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:44:48.247 [Thread-1] ERROR ChatAppServer - Login failed: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+java.lang.Exception: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+	at com.chatapp.server.service.AuthService.login(AuthService.java:125)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:44:48.253 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762163088250,"error":"Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.","success":false}
+2025-11-03 16:44:55.969 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"thang"},"timestamp":1762163095969,"error":null,"success":true}
+2025-11-03 16:44:55.970 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:44:55.971 [Thread-1] ERROR ChatAppServer - Login failed: Tên đăng nhập hoặc mật khẩu không đúng
+java.lang.Exception: Tên đăng nhập hoặc mật khẩu không đúng
+	at com.chatapp.server.service.AuthService.login(AuthService.java:111)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:44:55.972 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762163095972,"error":"Tên đăng nhập hoặc mật khẩu không đúng","success":false}
+2025-11-03 16:45:13.929 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"thang"},"timestamp":1762163113929,"error":null,"success":true}
+2025-11-03 16:45:13.929 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:45:13.929 [Thread-1] ERROR ChatAppServer - Login failed: Tên đăng nhập hoặc mật khẩu không đúng
+java.lang.Exception: Tên đăng nhập hoặc mật khẩu không đúng
+	at com.chatapp.server.service.AuthService.login(AuthService.java:111)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:45:13.929 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762163113929,"error":"Tên đăng nhập hoặc mật khẩu không đúng","success":false}
+2025-11-03 16:45:17.951 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:45:17.952 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-11-03 16:45:31.874 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:45:31.874 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 16:45:31.874 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:45:31.874 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 16:45:31.887 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 16:45:32.057 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74e28667
+2025-11-03 16:45:32.058 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-03 16:45:32.058 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-11-03 16:45:32.061 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-11-03 16:45:32.065 [main] INFO  ChatAppServer - Database connection established
+2025-11-03 16:45:32.065 [main] INFO  ChatAppServer - Starting chat server...
+2025-11-03 16:45:32.068 [main] INFO  ChatAppServer - Server started on port 8888
+2025-11-03 16:45:32.068 [main] INFO  ChatAppServer - Waiting for clients...
+2025-11-03 16:45:34.407 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 16:45:34.416 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 16:45:40.739 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1762163140703,"error":null,"success":true}
+2025-11-03 16:45:40.772 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:45:40.858 [Thread-1] INFO  ChatAppServer - User logged in: huy
+2025-11-03 16:45:40.862 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"huy","userId":2,"email":"huy@gmail.com","statusMessage":null,"username":"huy"},"timestamp":1762163140859,"error":null,"success":true}
+2025-11-03 16:45:42.815 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:45:42.817 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-11-03 16:45:47.255 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 16:45:47.255 [Thread-2] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 16:45:52.633 [Thread-2] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"thang"},"timestamp":1762163152576,"error":null,"success":true}
+2025-11-03 16:45:52.634 [Thread-2] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:45:52.636 [Thread-2] ERROR ChatAppServer - Login failed: Tên đăng nhập hoặc mật khẩu không đúng
+java.lang.Exception: Tên đăng nhập hoặc mật khẩu không đúng
+	at com.chatapp.server.service.AuthService.login(AuthService.java:111)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:45:52.637 [Thread-2] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762163152637,"error":"Tên đăng nhập hoặc mật khẩu không đúng","success":false}
+2025-11-03 16:47:53.485 [Thread-2] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"thang"},"timestamp":1762163273485,"error":null,"success":true}
+2025-11-03 16:47:53.485 [Thread-2] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:47:53.485 [Thread-2] ERROR ChatAppServer - Login failed: Tên đăng nhập hoặc mật khẩu không đúng
+java.lang.Exception: Tên đăng nhập hoặc mật khẩu không đúng
+	at com.chatapp.server.service.AuthService.login(AuthService.java:111)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:47:53.485 [Thread-2] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762163273485,"error":"Tên đăng nhập hoặc mật khẩu không đúng","success":false}
+2025-11-03 16:47:58.593 [Thread-2] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:47:58.593 [Thread-2] INFO  ChatAppServer - Client disconnected
+2025-11-03 16:48:13.751 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:48:13.751 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 16:48:13.751 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:48:13.751 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 16:48:13.763 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 16:48:13.913 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74e28667
+2025-11-03 16:48:13.914 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-03 16:48:13.915 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-11-03 16:48:13.915 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-11-03 16:48:13.915 [main] INFO  ChatAppServer - Database connection established
+2025-11-03 16:48:13.915 [main] INFO  ChatAppServer - Starting chat server...
+2025-11-03 16:48:13.925 [main] INFO  ChatAppServer - Server started on port 8888
+2025-11-03 16:48:13.925 [main] INFO  ChatAppServer - Waiting for clients...
+2025-11-03 16:48:18.486 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 16:48:18.493 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 16:48:25.283 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"thang"},"timestamp":1762163305247,"error":null,"success":true}
+2025-11-03 16:48:25.316 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:48:25.334 [Thread-1] ERROR ChatAppServer - Login failed: Tên đăng nhập hoặc mật khẩu không đúng 2
+java.lang.Exception: Tên đăng nhập hoặc mật khẩu không đúng 2
+	at com.chatapp.server.service.AuthService.login(AuthService.java:111)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:48:25.339 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762163305337,"error":"Tên đăng nhập hoặc mật khẩu không đúng 2","success":false}
+2025-11-03 16:48:28.247 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:48:28.247 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-11-03 16:52:03.239 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:52:03.246 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 16:52:03.246 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:52:03.246 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 16:52:03.254 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 16:52:03.396 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74e28667
+2025-11-03 16:52:03.396 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-03 16:52:03.396 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-11-03 16:52:03.396 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-11-03 16:52:03.396 [main] INFO  ChatAppServer - Database connection established
+2025-11-03 16:52:03.396 [main] INFO  ChatAppServer - Starting chat server...
+2025-11-03 16:52:03.408 [main] INFO  ChatAppServer - Server started on port 8888
+2025-11-03 16:52:03.408 [main] INFO  ChatAppServer - Waiting for clients...
+2025-11-03 16:52:11.351 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 16:52:11.359 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 16:52:16.240 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"1234","username":"huy"},"timestamp":1762163536207,"error":null,"success":true}
+2025-11-03 16:52:16.265 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:52:16.339 [Thread-1] ERROR ChatAppServer - Login failed: Tên đăng nhập hoặc mật khẩu không đúng 1
+java.lang.Exception: Tên đăng nhập hoặc mật khẩu không đúng 1
+	at com.chatapp.server.service.AuthService.login(AuthService.java:116)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:52:16.343 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762163536341,"error":"Tên đăng nhập hoặc mật khẩu không đúng 1","success":false}
+2025-11-03 16:52:31.344 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"thang"},"timestamp":1762163551344,"error":null,"success":true}
+2025-11-03 16:52:31.345 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:52:31.346 [Thread-1] ERROR ChatAppServer - Login failed: Tên đăng nhập hoặc mật khẩu không đúng 2
+java.lang.Exception: Tên đăng nhập hoặc mật khẩu không đúng 2
+	at com.chatapp.server.service.AuthService.login(AuthService.java:111)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:52:31.346 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762163551346,"error":"Tên đăng nhập hoặc mật khẩu không đúng 2","success":false}
+2025-11-03 16:52:55.634 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:52:55.634 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-11-03 16:54:06.373 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:54:06.373 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 16:54:06.373 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:54:06.373 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 16:54:06.394 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 16:54:06.598 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74e28667
+2025-11-03 16:54:06.600 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-03 16:54:06.604 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-11-03 16:54:06.605 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-11-03 16:54:06.616 [main] INFO  ChatAppServer - Database connection established
+2025-11-03 16:54:06.616 [main] INFO  ChatAppServer - Starting chat server...
+2025-11-03 16:54:06.618 [main] INFO  ChatAppServer - Server started on port 8888
+2025-11-03 16:54:06.618 [main] INFO  ChatAppServer - Waiting for clients...
+2025-11-03 16:54:14.036 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 16:54:14.044 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 16:54:20.363 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1762163660330,"error":null,"success":true}
+2025-11-03 16:54:20.394 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:54:20.473 [Thread-1] ERROR ChatAppServer - Login failed: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+java.lang.Exception: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+	at com.chatapp.server.service.AuthService.login(AuthService.java:125)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:54:20.478 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762163660475,"error":"Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.","success":false}
+2025-11-03 16:54:48.920 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:54:48.920 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-11-03 16:54:52.298 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:54:52.298 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 16:54:52.298 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:54:52.298 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 16:54:52.298 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 16:54:52.477 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74e28667
+2025-11-03 16:54:52.480 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-03 16:54:52.482 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-11-03 16:54:52.482 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-11-03 16:54:52.482 [main] INFO  ChatAppServer - Database connection established
+2025-11-03 16:54:52.482 [main] INFO  ChatAppServer - Starting chat server...
+2025-11-03 16:54:52.493 [main] INFO  ChatAppServer - Server started on port 8888
+2025-11-03 16:54:52.495 [main] INFO  ChatAppServer - Waiting for clients...
+2025-11-03 16:54:54.722 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 16:54:54.729 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 16:55:00.814 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1762163700780,"error":null,"success":true}
+2025-11-03 16:55:00.845 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:55:00.923 [Thread-1] ERROR ChatAppServer - Login failed: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+java.lang.Exception: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+	at com.chatapp.server.service.AuthService.login(AuthService.java:125)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:55:00.928 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762163700925,"error":"Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.","success":false}
+2025-11-03 16:55:03.863 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:55:03.865 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-11-03 16:55:39.731 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:55:39.738 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 16:55:39.738 [main] INFO  ChatAppServer - =================================
+2025-11-03 16:55:39.738 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 16:55:39.751 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 16:55:39.916 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74e28667
+2025-11-03 16:55:39.921 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-03 16:55:39.923 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-11-03 16:55:39.923 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-11-03 16:55:39.931 [main] INFO  ChatAppServer - Database connection established
+2025-11-03 16:55:39.931 [main] INFO  ChatAppServer - Starting chat server...
+2025-11-03 16:55:39.934 [main] INFO  ChatAppServer - Server started on port 8888
+2025-11-03 16:55:39.934 [main] INFO  ChatAppServer - Waiting for clients...
+2025-11-03 16:55:42.338 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 16:55:42.345 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 16:55:47.792 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1762163747743,"error":null,"success":true}
+2025-11-03 16:55:47.844 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 16:55:47.940 [Thread-1] ERROR ChatAppServer - Login failed: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+java.lang.Exception: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+	at com.chatapp.server.service.AuthService.login(AuthService.java:128)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:55:47.946 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762163747943,"error":"Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.","success":false}
+2025-11-03 16:55:52.631 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 16:55:52.631 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-11-03 17:18:35.295 [main] INFO  ChatAppServer - =================================
+2025-11-03 17:18:35.296 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 17:18:35.296 [main] INFO  ChatAppServer - =================================
+2025-11-03 17:18:35.296 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 17:18:35.300 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 17:18:35.447 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74e28667
+2025-11-03 17:18:35.449 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-03 17:18:35.449 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-11-03 17:18:35.449 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-11-03 17:18:35.449 [main] INFO  ChatAppServer - Database connection established
+2025-11-03 17:18:35.449 [main] INFO  ChatAppServer - Starting chat server...
+2025-11-03 17:18:35.459 [main] INFO  ChatAppServer - Server started on port 8888
+2025-11-03 17:18:35.459 [main] INFO  ChatAppServer - Waiting for clients...
+2025-11-03 17:18:43.740 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 17:18:43.748 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 17:18:53.084 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"thang"},"timestamp":1762165133048,"error":null,"success":true}
+2025-11-03 17:18:53.116 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 17:18:53.203 [Thread-1] ERROR ChatAppServer - Login failed: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+java.lang.Exception: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+	at com.chatapp.server.service.AuthService.login(AuthService.java:126)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 17:18:53.210 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762165133208,"error":"Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.","success":false}
+2025-11-03 17:18:57.646 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1762165137646,"error":null,"success":true}
+2025-11-03 17:18:57.647 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 17:18:57.704 [Thread-1] INFO  ChatAppServer - User logged in: huy
+2025-11-03 17:18:57.704 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{"avatarUrl":null,"fullName":"huy","userId":2,"email":"huy@gmail.com","statusMessage":null,"username":"huy"},"timestamp":1762165137704,"error":null,"success":true}
+2025-11-03 17:18:59.593 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 17:18:59.596 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-11-03 17:19:45.120 [main] INFO  ChatAppServer - =================================
+2025-11-03 17:19:45.120 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 17:19:45.120 [main] INFO  ChatAppServer - =================================
+2025-11-03 17:19:45.120 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 17:19:45.132 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 17:19:45.359 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74e28667
+2025-11-03 17:19:45.361 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-03 17:19:45.363 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-11-03 17:19:45.369 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-11-03 17:19:45.381 [main] INFO  ChatAppServer - Database connection established
+2025-11-03 17:19:45.381 [main] INFO  ChatAppServer - Starting chat server...
+2025-11-03 17:19:45.387 [main] INFO  ChatAppServer - Server started on port 8888
+2025-11-03 17:19:45.387 [main] INFO  ChatAppServer - Waiting for clients...
+2025-11-03 17:19:52.337 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 17:19:52.345 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 17:19:57.580 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"huy"},"timestamp":1762165197547,"error":null,"success":true}
+2025-11-03 17:19:57.606 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 17:19:57.698 [Thread-1] ERROR ChatAppServer - Login failed: Tài khoản đã bị khóa
+java.lang.Exception: Tài khoản đã bị khóa
+	at com.chatapp.server.service.AuthService.login(AuthService.java:122)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 17:19:57.705 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762165197701,"error":"Tài khoản đã bị khóa","success":false}
+2025-11-03 17:20:00.397 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 17:20:00.404 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-11-03 17:28:11.085 [main] INFO  ChatAppServer - =================================
+2025-11-03 17:28:11.102 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 17:28:11.102 [main] INFO  ChatAppServer - =================================
+2025-11-03 17:28:11.102 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 17:28:11.112 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 17:28:11.282 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74e28667
+2025-11-03 17:28:11.283 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-03 17:28:11.283 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-11-03 17:28:11.283 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-11-03 17:28:11.290 [main] INFO  ChatAppServer - Database connection established
+2025-11-03 17:28:11.290 [main] INFO  ChatAppServer - Starting chat server...
+2025-11-03 17:28:11.295 [main] INFO  ChatAppServer - Server started on port 8888
+2025-11-03 17:28:11.295 [main] INFO  ChatAppServer - Waiting for clients...
+2025-11-03 17:28:18.719 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 17:28:18.726 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 17:28:33.506 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"nguyenduythang2808@gmail.com"},"timestamp":1762165713472,"error":null,"success":true}
+2025-11-03 17:28:33.536 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 17:28:33.620 [Thread-1] ERROR ChatAppServer - Login failed: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+java.lang.Exception: Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.
+	at com.chatapp.server.service.AuthService.login(AuthService.java:126)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 17:28:33.626 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762165713623,"error":"Vui lòng xác thực tài khoản qua OTP trước khi đăng nhập.","success":false}
+2025-11-03 17:28:41.880 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"LOGIN_REQUEST","data":{"password":"123456","username":"thang"},"timestamp":1762165721880,"error":null,"success":true}
+2025-11-03 17:28:41.881 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: LOGIN_REQUEST
+2025-11-03 17:28:41.882 [Thread-1] ERROR ChatAppServer - Login failed: Email mật khẩu không đúng 2
+java.lang.Exception: Email mật khẩu không đúng 2
+	at com.chatapp.server.service.AuthService.login(AuthService.java:112)
+	at com.chatapp.server.handler.AuthHandler.handleLogin(AuthHandler.java:40)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:80)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 17:28:41.883 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"LOGIN_RESPONSE","data":{},"timestamp":1762165721883,"error":"Email mật khẩu không đúng 2","success":false}
+2025-11-03 17:28:44.560 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 17:28:44.562 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-11-03 22:15:46.806 [main] INFO  ChatAppServer - =================================
+2025-11-03 22:15:46.807 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 22:15:46.807 [main] INFO  ChatAppServer - =================================
+2025-11-03 22:15:46.807 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 22:15:46.817 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 22:15:47.981 [main] ERROR com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Exception during pool initialization.
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:175)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81)
+	at com.chatapp.server.database.DatabaseManager.initialize(DatabaseManager.java:39)
+	at com.chatapp.server.ServerMain.main(ServerMain.java:18)
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:150)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:166)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:121)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:945)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	... 12 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:547)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 15 common frames omitted
+2025-11-03 22:15:47.983 [main] ERROR ChatAppServer - Failed to initialize database: Failed to initialize pool: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.zaxxer.hikari.pool.HikariPool.throwPoolInitializationException(HikariPool.java:596)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:582)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81)
+	at com.chatapp.server.database.DatabaseManager.initialize(DatabaseManager.java:39)
+	at com.chatapp.server.ServerMain.main(ServerMain.java:18)
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:175)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	... 4 common frames omitted
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:150)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:166)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:121)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:945)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	... 12 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:547)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 15 common frames omitted
+2025-11-03 22:15:47.985 [main] ERROR ChatAppServer - Failed to start server: Database initialization failed
+java.lang.RuntimeException: Database initialization failed
+	at com.chatapp.server.database.DatabaseManager.initialize(DatabaseManager.java:49)
+	at com.chatapp.server.ServerMain.main(ServerMain.java:18)
+Caused by: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.zaxxer.hikari.pool.HikariPool.throwPoolInitializationException(HikariPool.java:596)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:582)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81)
+	at com.chatapp.server.database.DatabaseManager.initialize(DatabaseManager.java:39)
+	... 1 common frames omitted
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:175)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	... 4 common frames omitted
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:150)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:166)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:121)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:945)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	... 12 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:547)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 15 common frames omitted
+2025-11-03 22:16:11.226 [main] INFO  ChatAppServer - =================================
+2025-11-03 22:16:11.227 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 22:16:11.227 [main] INFO  ChatAppServer - =================================
+2025-11-03 22:16:11.227 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 22:16:11.236 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 22:16:12.338 [main] ERROR com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Exception during pool initialization.
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:175)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81)
+	at com.chatapp.server.database.DatabaseManager.initialize(DatabaseManager.java:39)
+	at com.chatapp.server.ServerMain.main(ServerMain.java:18)
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:150)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:166)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:121)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:945)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	... 12 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:547)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 15 common frames omitted
+2025-11-03 22:16:12.340 [main] ERROR ChatAppServer - Failed to initialize database: Failed to initialize pool: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.zaxxer.hikari.pool.HikariPool.throwPoolInitializationException(HikariPool.java:596)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:582)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81)
+	at com.chatapp.server.database.DatabaseManager.initialize(DatabaseManager.java:39)
+	at com.chatapp.server.ServerMain.main(ServerMain.java:18)
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:175)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	... 4 common frames omitted
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:150)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:166)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:121)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:945)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	... 12 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:547)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 15 common frames omitted
+2025-11-03 22:16:12.340 [main] ERROR ChatAppServer - Failed to start server: Database initialization failed
+java.lang.RuntimeException: Database initialization failed
+	at com.chatapp.server.database.DatabaseManager.initialize(DatabaseManager.java:49)
+	at com.chatapp.server.ServerMain.main(ServerMain.java:18)
+Caused by: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.zaxxer.hikari.pool.HikariPool.throwPoolInitializationException(HikariPool.java:596)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:582)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81)
+	at com.chatapp.server.database.DatabaseManager.initialize(DatabaseManager.java:39)
+	... 1 common frames omitted
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:175)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	... 4 common frames omitted
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:150)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:166)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:121)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:945)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	... 12 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:547)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 15 common frames omitted
+2025-11-03 22:16:32.698 [main] INFO  ChatAppServer - =================================
+2025-11-03 22:16:32.698 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 22:16:32.698 [main] INFO  ChatAppServer - =================================
+2025-11-03 22:16:32.698 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 22:16:32.708 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 22:16:32.867 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74e28667
+2025-11-03 22:16:32.868 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-03 22:16:32.869 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-11-03 22:16:32.871 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-11-03 22:16:32.876 [main] INFO  ChatAppServer - Database connection established
+2025-11-03 22:16:32.876 [main] INFO  ChatAppServer - Starting chat server...
+2025-11-03 22:16:32.878 [main] INFO  ChatAppServer - Server started on port 8888
+2025-11-03 22:16:32.878 [main] INFO  ChatAppServer - Waiting for clients...
+2025-11-03 22:36:41.380 [main] INFO  ChatAppServer - =================================
+2025-11-03 22:36:41.387 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 22:36:41.387 [main] INFO  ChatAppServer - =================================
+2025-11-03 22:36:41.387 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 22:36:41.396 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 22:36:41.560 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74e28667
+2025-11-03 22:36:41.566 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-03 22:36:41.568 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-11-03 22:36:41.569 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-11-03 22:36:41.575 [main] INFO  ChatAppServer - Database connection established
+2025-11-03 22:36:41.575 [main] INFO  ChatAppServer - Starting chat server...
+2025-11-03 22:36:41.575 [main] INFO  ChatAppServer - Server started on port 8888
+2025-11-03 22:36:41.575 [main] INFO  ChatAppServer - Waiting for clients...
+2025-11-03 22:36:56.286 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 22:36:56.294 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 22:37:29.492 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"REGISTER_REQUEST","data":{"password":"123456","fullName":"thang","email":"nguyenduythang2808@gmail.com","username":"thang"},"timestamp":1762184249458,"error":null,"success":true}
+2025-11-03 22:37:29.518 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: REGISTER_REQUEST
+2025-11-03 22:37:34.383 [Thread-1] INFO  ChatAppServer - New user registered: thang
+2025-11-03 22:37:34.386 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"REGISTER_RESPONSE","data":{"message":"Đăng ký thành công! Vui lòng đăng nhập."},"timestamp":1762184254384,"error":null,"success":true}
+2025-11-03 22:42:39.718 [Thread-1] ERROR ChatAppServer - Client handler error: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:287)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:330)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:190)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 22:42:39.722 [Thread-1] INFO  ChatAppServer - Client disconnected
+2025-11-03 22:42:41.024 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 22:42:41.025 [Thread-2] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 22:43:08.457 [Thread-2] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"REGISTER_REQUEST","data":{"password":"123456","fullName":"thang","email":"nguyenduythang2808@gmail.com","username":"thang"},"timestamp":1762184588426,"error":null,"success":true}
+2025-11-03 22:43:08.457 [Thread-2] INFO  ChatAppServer - [SERVER] Handling: REGISTER_REQUEST
+2025-11-03 22:43:08.459 [Thread-2] ERROR ChatAppServer - Registration failed: Tên đăng nhập đã tồn tại
+java.lang.Exception: Tên đăng nhập đã tồn tại
+	at com.chatapp.server.service.AuthService.register(AuthService.java:51)
+	at com.chatapp.server.handler.AuthHandler.handleRegister(AuthHandler.java:81)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:88)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 22:43:08.459 [Thread-2] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"REGISTER_RESPONSE","data":{},"timestamp":1762184588459,"error":"Tên đăng nhập đã tồn tại","success":false}
+2025-11-03 22:43:14.064 [Thread-2] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"REGISTER_REQUEST","data":{"password":"123456","fullName":"than","email":"nguyenduythang2808@gmail.com","username":"than"},"timestamp":1762184594064,"error":null,"success":true}
+2025-11-03 22:43:14.064 [Thread-2] INFO  ChatAppServer - [SERVER] Handling: REGISTER_REQUEST
+2025-11-03 22:43:14.066 [Thread-2] ERROR ChatAppServer - Registration failed: Email đã được sử dụng
+java.lang.Exception: Email đã được sử dụng
+	at com.chatapp.server.service.AuthService.register(AuthService.java:56)
+	at com.chatapp.server.handler.AuthHandler.handleRegister(AuthHandler.java:81)
+	at com.chatapp.server.core.ClientHandler.handlePacket(ClientHandler.java:88)
+	at com.chatapp.server.core.ClientHandler.run(ClientHandler.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-03 22:43:14.066 [Thread-2] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"REGISTER_RESPONSE","data":{},"timestamp":1762184594066,"error":"Email đã được sử dụng","success":false}
+2025-11-03 22:44:23.150 [Thread-2] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"REGISTER_REQUEST","data":{"password":"123456","fullName":"thang","email":"nguyenduythang2808@gmail.com","username":"thang"},"timestamp":1762184663150,"error":null,"success":true}
+2025-11-03 22:44:23.150 [Thread-2] INFO  ChatAppServer - [SERVER] Handling: REGISTER_REQUEST
+2025-11-03 22:44:27.922 [Thread-2] INFO  ChatAppServer - New user registered: thang
+2025-11-03 22:44:27.922 [Thread-2] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"REGISTER_RESPONSE","data":{"message":"Đăng ký thành công! Vui lòng đăng nhập."},"timestamp":1762184667922,"error":null,"success":true}
+2025-11-03 22:44:41.916 [Thread-2] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"VERIFY_OTP_REQUEST","data":{"otpCode":"942538","username":"thang"},"timestamp":1762184681916,"error":null,"success":true}
+2025-11-03 22:44:41.917 [Thread-2] INFO  ChatAppServer - [SERVER] Handling: VERIFY_OTP_REQUEST
+2025-11-03 22:44:41.917 [Thread-2] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"ERROR","data":{},"timestamp":1762184681917,"error":"Unknown message type: VERIFY_OTP_REQUEST","success":false}
+2025-11-03 22:44:47.045 [Thread-2] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"RESEND_OTP_REQUEST","data":{"username":"thang"},"timestamp":1762184687045,"error":null,"success":true}
+2025-11-03 22:44:47.046 [Thread-2] INFO  ChatAppServer - [SERVER] Handling: RESEND_OTP_REQUEST
+2025-11-03 22:44:47.046 [Thread-2] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"ERROR","data":{},"timestamp":1762184687046,"error":"Unknown message type: RESEND_OTP_REQUEST","success":false}
+2025-11-03 22:44:56.948 [Thread-2] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"VERIFY_OTP_REQUEST","data":{"otpCode":"942538","username":"thang"},"timestamp":1762184696948,"error":null,"success":true}
+2025-11-03 22:44:56.949 [Thread-2] INFO  ChatAppServer - [SERVER] Handling: VERIFY_OTP_REQUEST
+2025-11-03 22:44:56.949 [Thread-2] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"ERROR","data":{},"timestamp":1762184696949,"error":"Unknown message type: VERIFY_OTP_REQUEST","success":false}
+2025-11-03 22:44:59.325 [Thread-2] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"RESEND_OTP_REQUEST","data":{"username":"thang"},"timestamp":1762184699325,"error":null,"success":true}
+2025-11-03 22:44:59.326 [Thread-2] INFO  ChatAppServer - [SERVER] Handling: RESEND_OTP_REQUEST
+2025-11-03 22:44:59.326 [Thread-2] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"ERROR","data":{},"timestamp":1762184699326,"error":"Unknown message type: RESEND_OTP_REQUEST","success":false}
+2025-11-03 22:45:15.208 [Thread-2] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"VERIFY_OTP_REQUEST","data":{"otpCode":"983923","username":"thang"},"timestamp":1762184715208,"error":null,"success":true}
+2025-11-03 22:45:15.208 [Thread-2] INFO  ChatAppServer - [SERVER] Handling: VERIFY_OTP_REQUEST
+2025-11-03 22:45:15.214 [Thread-2] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"ERROR","data":{},"timestamp":1762184715208,"error":"Unknown message type: VERIFY_OTP_REQUEST","success":false}
+2025-11-03 22:55:02.227 [main] INFO  ChatAppServer - =================================
+2025-11-03 22:55:02.230 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 22:55:02.230 [main] INFO  ChatAppServer - =================================
+2025-11-03 22:55:02.230 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 22:55:02.241 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 22:55:02.388 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74e28667
+2025-11-03 22:55:02.388 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-03 22:55:02.388 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-11-03 22:55:02.388 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-11-03 22:55:02.401 [main] INFO  ChatAppServer - Database connection established
+2025-11-03 22:55:02.401 [main] INFO  ChatAppServer - Starting chat server...
+2025-11-03 22:55:02.401 [main] INFO  ChatAppServer - Server started on port 8888
+2025-11-03 22:55:02.401 [main] INFO  ChatAppServer - Waiting for clients...
+2025-11-03 22:55:12.572 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 22:55:12.579 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 22:55:47.864 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"REGISTER_REQUEST","data":{"password":"123456","fullName":"thang","email":"nguyenduythang2808@gmail.com","username":"thang"},"timestamp":1762185347827,"error":null,"success":true}
+2025-11-03 22:55:47.896 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: REGISTER_REQUEST
+2025-11-03 22:55:52.966 [Thread-1] INFO  ChatAppServer - New user registered: thang
+2025-11-03 22:55:52.968 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"REGISTER_RESPONSE","data":{"message":"Đăng ký thành công! Vui lòng đăng nhập."},"timestamp":1762185352966,"error":null,"success":true}
+2025-11-03 22:56:21.190 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"VERIFY_OTP_REQUEST","data":{"otpCode":"958384","username":"thang"},"timestamp":1762185381189,"error":null,"success":true}
+2025-11-03 22:56:21.191 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: VERIFY_OTP_REQUEST
+2025-11-03 22:56:21.191 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"ERROR","data":{},"timestamp":1762185381191,"error":"Unknown message type: VERIFY_OTP_REQUEST","success":false}
+2025-11-03 22:58:57.038 [main] INFO  ChatAppServer - =================================
+2025-11-03 22:58:57.040 [main] INFO  ChatAppServer -   ChatApp Server Starting...   
+2025-11-03 22:58:57.040 [main] INFO  ChatAppServer - =================================
+2025-11-03 22:58:57.040 [main] INFO  ChatAppServer - Initializing database connection...
+2025-11-03 22:58:57.048 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-03 22:58:57.192 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74e28667
+2025-11-03 22:58:57.195 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-03 22:58:57.197 [main] INFO  ChatAppServer - Database connection pool initialized successfully
+2025-11-03 22:58:57.197 [main] INFO  ChatAppServer - Connected to: jdbc:mysql://localhost:3306/chatapp_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+2025-11-03 22:58:57.203 [main] INFO  ChatAppServer - Database connection established
+2025-11-03 22:58:57.203 [main] INFO  ChatAppServer - Starting chat server...
+2025-11-03 22:58:57.204 [main] INFO  ChatAppServer - Server started on port 8888
+2025-11-03 22:58:57.204 [main] INFO  ChatAppServer - Waiting for clients...
+2025-11-03 22:59:10.183 [main] INFO  ChatAppServer - New client connected: /127.0.0.1
+2025-11-03 22:59:10.191 [Thread-1] INFO  ChatAppServer - Client connected: /127.0.0.1
+2025-11-03 22:59:30.059 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"REGISTER_REQUEST","data":{"password":"123456","fullName":"bo","email":"thangtech07@gmail.com","username":"bo"},"timestamp":1762185570027,"error":null,"success":true}
+2025-11-03 22:59:30.084 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: REGISTER_REQUEST
+2025-11-03 22:59:35.053 [Thread-1] INFO  ChatAppServer - New user registered: bo
+2025-11-03 22:59:35.055 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"REGISTER_RESPONSE","data":{"message":"Đăng ký thành công! Vui lòng đăng nhập."},"timestamp":1762185575053,"error":null,"success":true}
+2025-11-03 22:59:49.634 [Thread-1] INFO  ChatAppServer - [SERVER] <<< RECV: {"type":"VERIFY_OTP_REQUEST","data":{"otpCode":"402044","username":"bo"},"timestamp":1762185589633,"error":null,"success":true}
+2025-11-03 22:59:49.634 [Thread-1] INFO  ChatAppServer - [SERVER] Handling: VERIFY_OTP_REQUEST
+2025-11-03 22:59:49.635 [Thread-1] INFO  ChatAppServer - [SERVER] >>> SEND: {"type":"ERROR","data":{},"timestamp":1762185589634,"error":"Unknown message type: VERIFY_OTP_REQUEST","success":false}
